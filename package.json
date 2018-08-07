@@ -1,0 +1,21 @@
+{
+  "name": "avl-boilerplate",
+  "version": "0.0.0",
+  "description": "Boilerplate for AVL web projects.",
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "env": {
+      "es6": true,
+      "browser": true
+    }
+  },
+  "scripts": {
+    "serve": "node ./node_modules/browser-sync/dist/bin src -w"
+  }
+}
