@@ -13,11 +13,19 @@ npm install
 npm run serve
 ```
 
-## Run inside Electron
+## Run with Electron
 
 ```bash
 npm run electron
 ```
+
+## Build Electron binaries
+
+```bash
+npm run electron-build
+```
+
+Binaries will be generated inside _bin_.
 
 ## Note on JavaScript libraries
 
