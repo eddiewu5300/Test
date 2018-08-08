@@ -13,6 +13,12 @@ npm install
 npm run serve
 ```
 
+## Run inside Electron
+
+```bash
+npm run electron
+```
+
 ## Note on JavaScript libraries
 
 For simplicity, optional library CDN includes can be uncommented in _index.html_. To avoid problems as libraries age, we link to specific versions. Since many of our apps require network access to run, this scenario should be sufficient.

@@ -4,6 +4,7 @@
   "description": "Boilerplate for AVL web projects.",
   "devDependencies": {
     "browser-sync": "^2.24.6",
+    "electron": "^2.0.6",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0"
@@ -15,7 +16,9 @@
       "browser": true
     }
   },
+  "main": "main.js",
   "scripts": {
-    "serve": "node ./node_modules/browser-sync/dist/bin src -w"
+    "serve": "node_modules/.bin/browser-sync src -w",
+    "electron": "node_modules/.bin/electron electron"
   }
 }
