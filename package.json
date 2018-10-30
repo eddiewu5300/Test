@@ -21,6 +21,6 @@
   "scripts": {
     "serve": "browser-sync src -w",
     "electron": "node node_modules/electron/cli.js .",
-    "electron-build": "electron-packager . --out=bin --prune --asar --overwrite --arch=x64 --platform=win32,linux"
+    "electron-build": "electron-packager . --out=bin --prune --asar --overwrite --arch=x64 --platform=darwin,linux"
   }
 }
