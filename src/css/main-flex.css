@@ -94,7 +94,7 @@ textarea {
 header {
   height: 40px;
 
-  color: #fff;
+  color: rgb(8, 3, 3);
   border: 2px solid black;
   border-bottom: 2px solid transparent;
 }
@@ -120,6 +120,15 @@ header {
 
 }
 
+.particle{
+  margin: 20px;
+  padding: 20px;
+  background: blue;
+  border: 0.5px solid black;
+  border-radius: 20px 20px;
+  width: 50%;
+}
+
 .bottom-ctl{
 
   flex: 2;
@@ -128,20 +137,43 @@ header {
 
 
 .content {
-  flex: 3;
+  flex: 2;
   border-left: 2px solid black;
 
 }
 
 footer {
   height: 100px;
-
+  display: flex;
+  flex-direction: row;
   border: 2px solid black;
   border-top: 2px solid transparent;
 }
 
+.rod-length {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
 
+.rod-radius {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
 
+.metal-comp {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.solution-comp {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 0px;
+  text-align: center;
+}
 
 
 
