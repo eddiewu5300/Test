@@ -91,6 +91,32 @@ textarea {
    ========================================================================== */
 
 
+header {
+  height: 40px;
+  background: #f00;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  height: 400px;
+}
+
+.left-box {
+  background: #0f0;
+  flex: 1;
+}
+
+.content {
+  flex: 3;
+  background: #00f;
+}
+footer {
+  height: 120px;
+  color: #fff;
+  background-color: #000;
+}
+
 
 
 
