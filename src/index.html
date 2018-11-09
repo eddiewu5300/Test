@@ -22,7 +22,7 @@
     <div class="left-box">
       <div class="top-ctl">
         <div class="particle">
-          particle
+
         </div>
       </div>
       <div class="bottom-ctl">
@@ -33,18 +33,98 @@
   </div>
   <footer>Footer
     <div class="rod-length">
-      rod-length
+      <label for="item">Length:</label>
+      <input type="range" name="number" id="number">
+      <button>Change</button>
     </div>
     <div class="rod-radius">
-      rod-radius
+      <label for="item">Radius:</label>
+      <input type="range" name="number" id="number2">
+      <button>Change</button>
     </div>
     <div class="metal-comp">
-      metal-comp
+      <label for="item">Metal:</label><br>
+      <input type="radio" name="metal" id="metal" value="gold" checked> Gold
+      <input type="radio" name="metal" id="metal2" value="silver"> Silver
+      <button>Change</button>
     </div>
     <div class="solution-comp">
-      solution-comp
+      <label for="item">Solution:</label><br>
+      <input type="radio" name="solution" id="solution1" value="grey" checked> glass
+      <input type="radio" name="solution" id="solution2" value="blue"> water
+      <button>Change</button>
     </div>
   </footer>
+  <script>
+    var particle = document.querySelector('.particle');
+    var top_ctl = document.querySelector('.top-ctl');
+    var input = document.querySelectorAll('input')[0];
+    var input2 = document.querySelectorAll('input')[1];
+    //var input3 = document.getElementById('metal2')
+    //var input4 = document.querySelectorAll('input')[3];
+    var length = document.querySelectorAll('button')[0];
+    var radius = document.querySelectorAll('button')[1];
+    var metal = document.querySelectorAll('button')[2];
+    var solution = document.querySelectorAll('button')[3];
+
+    length.onclick = function() {
+      //if input.value is int
+
+      var par_len = input.value;
+      console.log(par_len);
+      input.value = '';
+      particle.style.width = par_len+'px';
+    }
+
+    radius.onclick = function() {
+      //if input.value is int
+
+      var par_rad = input2.value;
+      console.log(par_rad);
+      input2.value = '';
+      particle.style.borderRadius = par_rad+'px';
+      particle.style.height = 2*par_rad+'px'
+    }
+
+/*     metal.onclick = function(){
+      var gold = document.getElementById('metal');
+      var silver = document.getElementById('metal2');
+      var m_color;
+      if (gold.checked) {
+        m_color = gold.value;
+      }
+      if (silver.checked) {
+        m_color = silver.value;
+      }
+      particle.style.background = m_color;
+    }
+ */
+    funtion changeRadio(){
+      console.log('123')
+    }
+
+    var metal_color = document.getElementById("metal");
+    metal_color.addEventListener("RadioStateChange",changeRadio , false);
+
+
+    solution.onclick = function(){
+      var glass = document.getElementById('solution1');
+      var water = document.getElementById('solution2');
+      var sol_color;
+      if (glass.checked) {
+        sol_color = glass.value;
+      }
+      if (water.checked) {
+        sol_color = water.value;
+      }
+      console.log(sol_color)
+      top_ctl.style.background = sol_color
+    }
+
+
+
+
+  </script>
 </body>
 
 </html>

@@ -125,8 +125,9 @@ header {
   padding: 20px;
   background: blue;
   border: 0.5px solid black;
-  border-radius: 20px 20px;
-  width: 50%;
+  border-radius: 5px;
+  width: 200px;
+  height: 40px;
 }
 
 .bottom-ctl{
@@ -152,26 +153,25 @@ footer {
 
 .rod-length {
   flex: 1;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
   text-align: center;
 }
 
 .rod-radius {
   flex: 1;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
   text-align: center;
 }
 
 .metal-comp {
   flex: 1;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
   text-align: center;
 }
 
 .solution-comp {
   flex: 1;
-  padding: 20px;
-  padding-bottom: 0px;
+  padding: 20px 20px 20px 0px;
   text-align: center;
 }
 
