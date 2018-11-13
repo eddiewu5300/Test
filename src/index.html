@@ -34,57 +34,113 @@
   <footer>Footer
     <div class="rod-length">
       <label for="item">Length:</label>
-      <input type="range" name="number" id="number">
-      <button>Change</button>
+      <input type="range" name="number" id="number1">
+
     </div>
     <div class="rod-radius">
       <label for="item">Radius:</label>
       <input type="range" name="number" id="number2">
-      <button>Change</button>
+
     </div>
     <div class="metal-comp">
       <label for="item">Metal:</label><br>
-      <input type="radio" name="metal" id="metal" value="gold" checked> Gold
+      <input type="radio" name="metal" id="metal1" value="gold" checked> Gold
       <input type="radio" name="metal" id="metal2" value="silver"> Silver
-      <button>Change</button>
+
     </div>
     <div class="solution-comp">
       <label for="item">Solution:</label><br>
       <input type="radio" name="solution" id="solution1" value="grey" checked> glass
       <input type="radio" name="solution" id="solution2" value="blue"> water
-      <button>Change</button>
+
     </div>
   </footer>
   <script>
     var particle = document.querySelector('.particle');
     var top_ctl = document.querySelector('.top-ctl');
-    var input = document.querySelectorAll('input')[0];
-    var input2 = document.querySelectorAll('input')[1];
-    //var input3 = document.getElementById('metal2')
-    //var input4 = document.querySelectorAll('input')[3];
-    var length = document.querySelectorAll('button')[0];
-    var radius = document.querySelectorAll('button')[1];
+    var input = document.querySelector('#number1');
+    var input2 = document.querySelector('#number2');
+    var input3 = document.getElementById('metal1');
+    var input4 = document.getElementById('metal2');
+    var input5 = document.querySelector('#solution1');
+    var input6 = document.querySelector('#solution2');
+
+
     var metal = document.querySelectorAll('button')[2];
     var solution = document.querySelectorAll('button')[3];
 
-    length.onclick = function() {
-      //if input.value is int
 
-      var par_len = input.value;
-      console.log(par_len);
-      input.value = '';
-      particle.style.width = par_len+'px';
-    }
+    // console.log("input 2:", input2)
+    input.addEventListener('change', function(event){
+      console.log(event);
+      console.log(event.target.value);
+      particle.style.width = event.target.value*1.8 +'px';
+    })
 
-    radius.onclick = function() {
-      //if input.value is int
+    input2.addEventListener('change', function(event){
+      console.log(event);
+      console.log('input2,',event.target.value);
+      particle.style.borderRadius = event.target.value +'px';
+      particle.style.height = 2*event.target.value+'px'
+    })
 
-      var par_rad = input2.value;
-      console.log(par_rad);
-      input2.value = '';
-      particle.style.borderRadius = par_rad+'px';
-      particle.style.height = 2*par_rad+'px'
-    }
+    input3.addEventListener('change', function(event){
+      var m_color;
+      console.log(event);
+      console.log('input3,',event.target.value);
+      if (event.target.checked) {
+        m_color = event.target.value;
+      }
+      particle.style.background = m_color;
+    })
+
+    input4.addEventListener('change', function(event){
+      var m_color;
+      console.log(event);
+      console.log('input4,',event.target.value);
+      if (event.target.checked) {
+        m_color = event.target.value;
+      }
+      particle.style.background = m_color;
+    })
+
+    input5.addEventListener('change', function(event){
+      var sol_color;
+      console.log(event);
+      console.log('input5',event.target.value);
+      if (event.target.checked) {
+        sol_color = event.target.value;
+      }
+      top_ctl.style.background = sol_color;
+    })
+
+    input6.addEventListener('change', function(event){
+      var sol_color;
+      console.log(event);
+      console.log('input6',event.target.value);
+      if (event.target.checked) {
+        sol_color = event.target.value;
+      }
+      top_ctl.style.background = sol_color;
+    })
+    // length.onclick = function() {
+    //   //if input.value is int
+
+    //   var par_len = input.value;
+    //   console.log(par_len);
+    //   input.value = '';
+    //   particle.style.width = par_len+'px';
+    // }
+
+    // radius.onclick = function() {
+    //   //if input.value is int
+
+    //   var par_rad = input2.value;
+    //   console.log(par_rad);
+    //   input2.value = '';
+    //   particle.style.borderRadius = par_rad+'px';
+    //   particle.style.height = 2*par_rad+'px'
+    // }
 
 /*     metal.onclick = function(){
       var gold = document.getElementById('metal');
@@ -98,28 +154,28 @@
       }
       particle.style.background = m_color;
     }
- */
-    funtion changeRadio(){
-      console.log('123')
-    }
+//  */
+//     function changeRadio(){
+//       console.log('123');
+//     }
 
-    var metal_color = document.getElementById("metal");
-    metal_color.addEventListener("RadioStateChange",changeRadio , false);
+//     var metal_color = document.getElementById("metal");
+//     metal_color.addEventListener("RadioStateChange",changeRadio , false);
 
 
-    solution.onclick = function(){
-      var glass = document.getElementById('solution1');
-      var water = document.getElementById('solution2');
-      var sol_color;
-      if (glass.checked) {
-        sol_color = glass.value;
-      }
-      if (water.checked) {
-        sol_color = water.value;
-      }
-      console.log(sol_color)
-      top_ctl.style.background = sol_color
-    }
+//     solution.onclick = function(){
+//       var glass = document.getElementById('solution1');
+//       var water = document.getElementById('solution2');
+//       var sol_color;
+//       if (glass.checked) {
+//         sol_color = glass.value;
+//       }
+//       if (water.checked) {
+//         sol_color = water.value;
+//       }
+//       console.log(sol_color)
+//       top_ctl.style.background = sol_color
+//     }
 
 
 
