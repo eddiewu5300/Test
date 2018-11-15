@@ -7,7 +7,7 @@
   <title>Chemistry Project</title>
   <meta name="description" content="template">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
@@ -21,15 +21,16 @@
   <div class="container">
     <div class="left-box">
       <div class="top-ctl">
-        <div class="particle">
-
-        </div>
+        <div class="particle"></div>
       </div>
-      <div class="bottom-ctl">
-        Bottom Control
-      </div>
+      <div class="bottom-ctl"></div>
     </div>
-    <div class="content">Content</div>
+    <div class="content">
+      <a-scene background="color: #ECECEC">
+        <a-box position="-1 5 -7" rotation="0 45 0" color="#4CC3D9" width="1" height="1" depth="1" shadow></a-box>
+        <a-plane position="0 1 -7" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      </a-scene>
+    </div>
   </div>
   <footer>Footer
     <div class="rod-length">
@@ -58,30 +59,32 @@
   <script>
     var particle = document.querySelector('.particle');
     var top_ctl = document.querySelector('.top-ctl');
+    var bottom_ctl = document.querySelector('.bottom-ctl');
     var input = document.querySelector('#number1');
     var input2 = document.querySelector('#number2');
     var input3 = document.getElementById('metal1');
     var input4 = document.getElementById('metal2');
     var input5 = document.querySelector('#solution1');
     var input6 = document.querySelector('#solution2');
-
-
-    var metal = document.querySelectorAll('button')[2];
-    var solution = document.querySelectorAll('button')[3];
-
-
+    var r = 0;
+    var g = 0;
+    var b = 0;
     // console.log("input 2:", input2)
     input.addEventListener('change', function(event){
       console.log(event);
       console.log(event.target.value);
       particle.style.width = event.target.value*1.8 +'px';
+      r = event.target.value*255/100
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
 
     input2.addEventListener('change', function(event){
       console.log(event);
       console.log('input2,',event.target.value);
       particle.style.borderRadius = event.target.value +'px';
-      particle.style.height = 2*event.target.value+'px'
+      particle.style.height = 2*event.target.value+'px';
+      g = event.target.value*255/100
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
 
     input3.addEventListener('change', function(event){
@@ -92,6 +95,8 @@
         m_color = event.target.value;
       }
       particle.style.background = m_color;
+      b = 180
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
 
     input4.addEventListener('change', function(event){
@@ -102,6 +107,8 @@
         m_color = event.target.value;
       }
       particle.style.background = m_color;
+      b = 60
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
 
     input5.addEventListener('change', function(event){
@@ -112,6 +119,8 @@
         sol_color = event.target.value;
       }
       top_ctl.style.background = sol_color;
+      b = 120
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
 
     input6.addEventListener('change', function(event){
@@ -122,7 +131,11 @@
         sol_color = event.target.value;
       }
       top_ctl.style.background = sol_color;
+      b = 240
+      bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     })
+    ///bottom_ctl.style.background = 'rgb(200,5,200)';
+    //   bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
     // length.onclick = function() {
     //   //if input.value is int
 
@@ -176,9 +189,6 @@
 //       console.log(sol_color)
 //       top_ctl.style.background = sol_color
 //     }
-
-
-
 
   </script>
 </body>
