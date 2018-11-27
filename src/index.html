@@ -7,16 +7,44 @@
   <title>Chemistry Project</title>
   <meta name="description" content="template">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+  <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+  <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+
 
   <link rel="stylesheet" href="css/main-flex.css">
 
 </head>
 
 <body>
+  <script>
+      var clicked_target = null
+      var rgb_value = null
+      AFRAME.registerComponent('cursor-listener', {
+          init: function () {
+              // var lastIndex = -1;
+              // var COLORS = ['red', 'green', 'blue'];
+
+              this.el.addEventListener('click', function (evt) {
+
+                  clicked_target = evt.target;
+                  console.log(clicked_target);
+                  console.log();
+                  rgb_value = clicked_target.getAttribute('color');
+                  rgb_value = rgb_value.substring(0, rgb_value.length-1).substring(4).split(',').map( d => Number(d));
+                  r = rgb_value[0];
+                  g = rgb_value[1];
+                  b = rgb_value[2];
+                  // lastIndex = (lastIndex + 1) % COLORS.length;
+                  // this.setAttribute('material', 'color', COLORS[lastIndex]);
+                  // console.log('I was clicked at: ', evt.detail.intersection.point);
+              });
+          }
+      });
+  </script>
   <header>Header</header>
   <div class="container">
     <div class="left-box">
@@ -25,11 +53,23 @@
       </div>
       <div class="bottom-ctl"></div>
     </div>
-    <div class="content">
-      <a-scene background="color: #ECECEC">
-        <a-box position="-1 5 -7" rotation="0 45 0" color="#4CC3D9" width="1" height="1" depth="1" shadow></a-box>
-        <a-plane position="0 1 -7" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+    <div class="content" id="myEmbeddedScene">
+      <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC">
+        <a-box id="box1" position="0 0 0" rotation="0 45 0" color="rgb(255,0,0)" width="1" height="1" depth="1" shadow cursor-listener></a-box>
+        <a-box id="box2" position="1 0 0" rotation="0 45 0" color="rgb(0,255,0)" width="1" height="1" depth="1" shadow cursor-listener></a-box>
+        <!-- <a-plane position="0 1 -7" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+
+
+
+        <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 0 3">
+          <a-entity cursor="rayOrigin: mouse"></a-entity>
+        </a-entity>
       </a-scene>
+      <!-- <a-scene embedded vr-mode-ui="enabled: false">
+          <a-entity supercraft-loader="name: icky-snake"></a-entity>
+          <a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; minDistance: 0.5; maxDistance: 180; initialPosition: 0 5 15"></a-entity>
+      </a-scene> -->
+
     </div>
   </div>
   <footer>Footer
@@ -60,6 +100,7 @@
     var particle = document.querySelector('.particle');
     var top_ctl = document.querySelector('.top-ctl');
     var bottom_ctl = document.querySelector('.bottom-ctl');
+    var box = document.querySelector('#box1');
     var input = document.querySelector('#number1');
     var input2 = document.querySelector('#number2');
     var input3 = document.getElementById('metal1');
@@ -69,13 +110,16 @@
     var r = 0;
     var g = 0;
     var b = 0;
+
     // console.log("input 2:", input2)
+
     input.addEventListener('change', function(event){
       console.log(event);
       console.log(event.target.value);
       particle.style.width = event.target.value*1.8 +'px';
-      r = event.target.value*255/100
+      r = parseInt(event.target.value*255/100);
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
 
     input2.addEventListener('change', function(event){
@@ -83,8 +127,9 @@
       console.log('input2,',event.target.value);
       particle.style.borderRadius = event.target.value +'px';
       particle.style.height = 2*event.target.value+'px';
-      g = event.target.value*255/100
+      g = parseInt(event.target.value*255/100);
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
 
     input3.addEventListener('change', function(event){
@@ -95,8 +140,9 @@
         m_color = event.target.value;
       }
       particle.style.background = m_color;
-      b = 180
+      b = 180;
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
 
     input4.addEventListener('change', function(event){
@@ -107,8 +153,9 @@
         m_color = event.target.value;
       }
       particle.style.background = m_color;
-      b = 60
+      b = 60;
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
 
     input5.addEventListener('change', function(event){
@@ -119,8 +166,9 @@
         sol_color = event.target.value;
       }
       top_ctl.style.background = sol_color;
-      b = 120
+      b = 120;
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
 
     input6.addEventListener('change', function(event){
@@ -131,8 +179,9 @@
         sol_color = event.target.value;
       }
       top_ctl.style.background = sol_color;
-      b = 240
+      b = 240;
       bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
+      clicked_target.setAttribute('color','rgb('+r + ',' + g + ',' + b+')')
     })
     ///bottom_ctl.style.background = 'rgb(200,5,200)';
     //   bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
