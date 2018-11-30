@@ -14,7 +14,6 @@
     <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
     <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
     <script type="text/javascript" src="color-map.js"></script>
-
     <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />
 
@@ -61,12 +60,8 @@
           embedded
           vr-mode-ui="enabled: false"
           background="color: #ECECEC"
-          class="fullscreen"
+          outline="thickness: 3; color: ‘#000’; alpha: 1.0"
         >
-          <!-- outline="thickness: 3; color: ‘#000’; alpha: 1.0" -->
-          <!--
-            outline="enabled: false; width: 1.33 1.33; range: 0 10; strength: 3; smooth: true;"
-          -->
           <a-box
             id="box1"
             position="0 0 0"
@@ -88,8 +83,10 @@
             depth="1"
             shadow
             cursor-listener
-            outline
           ></a-box>
+          <!--
+            <a-plane position="0 1 -7" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+          -->
 
           <a-entity
             camera
@@ -99,17 +96,23 @@
             <a-entity cursor="rayOrigin: mouse"></a-entity>
           </a-entity>
         </a-scene>
+        <!--
+          <a-scene embedded vr-mode-ui="enabled: false">
+              <a-entity supercraft-loader="name: icky-snake"></a-entity>
+              <a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; minDistance: 0.5; maxDistance: 180; initialPosition: 0 5 15"></a-entity>
+          </a-scene>
+        -->
       </div>
     </div>
     <footer>
       Footer
       <div class="rod-length">
         <label for="item">Length:</label>
-        <input type="range" name="number" id="number1" min="0" max="55" />
+        <input type="range" name="number" id="number1" />
       </div>
       <div class="rod-radius">
         <label for="item">Radius:</label>
-        <input type="range" name="number" id="number2" min="0" max="15" />
+        <input type="range" name="number" id="number2" />
       </div>
       <div class="metal-comp">
         <label for="item">Metal:</label><br />
@@ -130,7 +133,6 @@
         <input type="radio" name="solution" id="solution2" value="blue" /> water
       </div>
     </footer>
-
     <script>
       var particle = document.querySelector(".particle");
       var top_ctl = document.querySelector(".top-ctl");
