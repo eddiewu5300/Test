@@ -9,7 +9,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
     <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
     <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
@@ -62,6 +62,7 @@
           vr-mode-ui="enabled: false"
           background="color: #ECECEC"
           class="fullscreen"
+          outline="thickness: 3; color: ‘#000’; alpha: 1.0"
         >
           <!-- outline="thickness: 3; color: ‘#000’; alpha: 1.0" -->
           <!--
@@ -77,6 +78,7 @@
             depth="1"
             shadow
             cursor-listener
+
           ></a-box>
           <a-box
             id="box2"
@@ -88,7 +90,7 @@
             depth="1"
             shadow
             cursor-listener
-            outline
+
           ></a-box>
 
           <a-entity
