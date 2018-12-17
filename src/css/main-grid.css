@@ -126,6 +126,7 @@ header {
 .content {
   grid-column: span 8;
   height: 350px;
+  color: #ECECEC
 
 }
 
@@ -320,4 +321,15 @@ footer {
     h3 {
         page-break-after: avoid;
     }
+}
+
+
+
+.color-selector{
+  stroke: black;
+  stroke-width: 3;
+}
+.color-selector.selected{
+  stroke: white;
+  stroke-width: 3;
 }

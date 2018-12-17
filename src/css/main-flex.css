@@ -140,6 +140,7 @@ header {
 .content {
   flex: 2;
   border-left: 2px solid black;
+  background: #ECECEC
 
 }
 
@@ -169,7 +170,7 @@ footer {
   text-align: center;
 }
 
-.solution-comp {
+.medium-comp {
   flex: 1;
   padding: 20px 20px 20px 0px;
   text-align: center;
@@ -356,4 +357,14 @@ footer {
     h3 {
         page-break-after: avoid;
     }
+}
+
+
+
+.color-selector{
+  stroke: black;
+  stroke-width: 3;
+}
+.color-selector.selected{
+  stroke: white;
 }

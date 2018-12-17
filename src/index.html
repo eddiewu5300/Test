@@ -1,307 +1,290 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Chemistry Project</title>
-    <meta name="description" content="template" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
-    <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
-    <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
-    <script type="text/javascript" src="color-map.js"></script>
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
 
-    <link rel="stylesheet" href="css/main-flex.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Chemistry Project</title>
+  <meta name="description" content="template" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+  <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+  <script type="text/javascript" src="color-map.js"></script>
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.png" />
 
-  <body>
-    <script>
-      var clicked_target = null;
-      var rgb_value = null;
-      AFRAME.registerComponent("cursor-listener", {
-        init: function() {
-          // var lastIndex = -1;
-          // var COLORS = ['red', 'green', 'blue'];
+  <link rel="stylesheet" href="css/main-flex.css" />
+</head>
 
-          this.el.addEventListener("click", function(evt) {
-            clicked_target = evt.target;
-            console.log(clicked_target);
-            console.log();
-            rgb_value = clicked_target.getAttribute("color");
-            rgb_value = rgb_value
-              .substring(0, rgb_value.length - 1)
-              .substring(4)
-              .split(",")
-              .map(d => Number(d));
-            r = rgb_value[0];
-            g = rgb_value[1];
-            b = rgb_value[2];
-            // lastIndex = (lastIndex + 1) % COLORS.length;
-            // this.setAttribute('material', 'color', COLORS[lastIndex]);
-            // console.log('I was clicked at: ', evt.detail.intersection.point);
-          });
-        }
-      });
-    </script>
-    <header>Header</header>
-    <div class="container">
-      <div class="left-box">
-        <div class="top-ctl"><div class="particle"></div></div>
-        <div class="bottom-ctl"></div>
-      </div>
-      <div class="content" id="myEmbeddedScene">
-        <a-scene
-          embedded
-          vr-mode-ui="enabled: false"
-          background="color: #ECECEC"
-          outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;"
+<body>
 
-        >
-        <!-- outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;" -->
-        <!-- outline="thickness: 0.003; color: ‘#000’; alpha: 1.0" -->
-          <a-box
-            id="box1"
-            position="0 0 0"
-            rotation="0 45 0"
-            color="rgb(255,0,0)"
-            width="1"
-            height="1"
-            depth="1"
-            shadow
-            cursor-listener
-          ></a-box>
-          <a-box
-            id="box2"
-            position="1 0 0"
-            rotation="0 45 0"
-            color="rgb(0,255,0)"
-            width="1"
-            height="1"
-            depth="1"
-            shadow
-            cursor-listener
-          ></a-box>
-          <!--
-            <a-plane position="0 1 -7" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-          -->
+  <header>Header</header>
+  <div class="container">
+    <div class="left-box">
+      <div class="top-ctl">
+        <a-scene embedded vr-mode-ui="enabled: flase" background="color: #ECECEC" outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
+          <a-cylinder id="cylinder" color="crimson" height="1" radius="1" theta-start="50" rotation="45"
+            cursor-listener></a-cylinder>
 
-          <a-entity
-            camera
-            look-controls
-            orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 0 3"
-          >
-            <a-entity cursor="rayOrigin: mouse"></a-entity>
-          </a-entity>
+          <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 0 3"></a-entity>
+          <a-entity cursor="rayOrigin: mouse"></a-entity>
         </a-scene>
-        <!--
-          <a-scene embedded vr-mode-ui="enabled: false">
-              <a-entity supercraft-loader="name: icky-snake"></a-entity>
-              <a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; minDistance: 0.5; maxDistance: 180; initialPosition: 0 5 15"></a-entity>
-          </a-scene>
-        -->
       </div>
+      <div class="bottom-ctl"></div>
     </div>
-    <footer>
-      Footer
-      <div class="rod-length">
-        <label for="item">Length:</label>
-        <input type="range" name="number" id="number1" min="0" max="55" />
-      </div>
-      <div class="rod-radius">
-        <label for="item">Radius:</label>
-        <input type="range" name="number" id="number2" min="0" max="15" />
-      </div>
-      <div class="metal-comp">
-        <label for="item">Metal:</label><br />
-        <input type="radio" name="metal" id="metal1" value="Au" checked />
-        Au
-        <input type="radio" name="metal" id="metal2" value="Ag" /> Ag
-      </div>
-      <div class="solution-comp">
-        <label for="item">Solution:</label><br />
-        <input
-          type="radio"
-          name="solution"
-          id="solution1"
-          value="glass"
-          checked
-        />
-        glass
-        <input type="radio" name="solution" id="solution2" value="water" /> water
-      </div>
-    </footer>
-    <script>
-      var particle = document.querySelector(".particle");
-      var top_ctl = document.querySelector(".top-ctl");
-      var bottom_ctl = document.querySelector(".bottom-ctl");
-      var box = document.querySelector("#box1");
-      var input = document.querySelector("#number1");
-      var input2 = document.querySelector("#number2");
-      var input3 = document.getElementById("metal1");
-      var input4 = document.getElementById("metal2");
-      var input5 = document.querySelector("#solution1");
-      var input6 = document.querySelector("#solution2");
-      var r = 0;
-      var g = 0;
-      var b = 0;
-      var l_index = 0;
-      var r_index = 0;
-      var metal = "Au"
-      var solution = "glass"
+    <div class="content" id="my-stain-glass">
+      <!-- <svg id="mysvg" width="500" height="300">
+        <rect x="10" y="20" width="90" height="60" class="color-selector" data-color="rgb(255,0,0)" metal="Au" medium="glass"
+          style="fill:rgb(255,0,0);">
 
-      // console.log("input 2:", input2)
+        </rect>
+        <rect x="10" y="120" width="90" height="60" class="color-selector" data-color="rgb(0,255,0)" metal="Au" medium="glass"
+          style="fill:rgb(0,255,0);">
 
-      input.addEventListener("change", function(event) {
-        console.log(event);
-        console.log(event.target.value);
-        particle.style.width = event.target.value * 1.8 + "px";
-        l_index = parseInt(event.target.value);
-        r = color_map[metal+"_"+solution].R[l_index][r_index];
-        g = color_map[metal+"_"+solution].G[l_index][r_index];
-        b = color_map[metal+"_"+solution].B[l_index][r_index];
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-          // console.log('R',r)
-        );
-      });
+        </rect>
+        <rect x="10" y="220" width="90" height="60" class="color-selector" data-color="rgb(0,0,255)" metal="Au" medium="glass"
+          style="fill:rgb(0,0,255);">
 
-      input2.addEventListener("change", function(event) {
-        console.log(event);
-        console.log("input2,", event.target.value);
-        particle.style.borderRadius = event.target.value + "px";
-        particle.style.height = 2 * event.target.value + "px";
-        r_index = parseInt(event.target.value);
-        r = color_map[metal+"_"+solution].R[l_index][r_index];
-        g = color_map[metal+"_"+solution].G[l_index][r_index];
-        b = color_map[metal+"_"+solution].B[l_index][r_index];
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-        );
-      });
 
-      input3.addEventListener("change", function(event) {
-        var m_color;
-        console.log(event);
-        console.log("input3,", event.target.value);
-        if (event.target.checked) {
-          metal = event.target.value;
+        </rect>
+        Sorry, your browser does not support inline SVG.
+      </svg> -->
+      
+      <object id="svg" data="rec.svg" type="image/svg+xml"></object>
+
+    </div>
+  </div>
+  <footer>
+    Footer
+    <div class="rod-length">
+      <label for="item">Length:</label>
+      <input type="range" name="number" id="number1" min="0" max="55" />
+    </div>
+    <div class="rod-radius">
+      <label for="item">Radius:</label>
+      <input type="range" name="number" id="number2" min="0" max="15" />
+    </div>
+    <div class="metal-comp">
+      <label for="item">Metal:</label><br />
+      <input type="radio" name="metal" id="metal1" value="Au" checked />
+      Gold
+      <input type="radio" name="metal" id="metal2" value="Ag" /> Silver
+    </div>
+    <div class="medium-comp">
+      <label for="item">Medium:</label><br />
+      <input type="radio" name="medium" id="medium1" value="glass" checked />Glass
+      <input type="radio" name="medium" id="medium2" value="water" /> Water
+    </div>
+  </footer>
+
+  <script>
+
+    var top_ctl = document.querySelector(".top-ctl");
+    var bottom_ctl = document.querySelector(".bottom-ctl");
+    var input = document.querySelector("#number1");
+    var input2 = document.querySelector("#number2");
+    var input3 = document.getElementById("metal1");
+    var input4 = document.getElementById("metal2");
+    var input5 = document.querySelector("#medium1");
+    var input6 = document.querySelector("#medium2");
+    // var svg = document.querySelector("#mysvg")
+    var svg = document.querySelector("#svg").contentDocument.querySelector("#mysvg")
+    var cylinder = document.querySelector("#cylinder");
+    var r = 0;
+    var g = 0;
+    var b = 0;
+    var l_index = 0;
+    var r_index = 0;
+    var metal = "Au"
+    var medium = "glass"
+
+
+    svg.addEventListener("click", function (evt) {
+      console.log(evt.target);
+      const targetColor = evt.target.getAttribute("data-color");
+      if (targetColor) {
+        // console.log(evt.target.getAttribute("data-color"))
+        Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
+          // console.log(d);
+          d.classList.remove("selected");
+        })
+        //set up the selected item's attribute at css
+        evt.target.classList.add("selected");
+        cylinder.setAttribute("color", targetColor)
+
+        rgb_value = targetColor
+          .substring(0, targetColor.length - 1)
+          .substring(4)
+          .split(",")
+          .map(d => Number(d));
+        console.log(rgb_value)
+        r = rgb_value[0];
+        g = rgb_value[1];
+        b = rgb_value[2];
+        metal = evt.target.getAttribute("metal")
+        //console.log(metal)
+        medium = evt.target.getAttribute("medium")
+        //console.log(medium)
+
+        if (metal === 'Au') {
+          document.querySelector("#metal1").checked = true
         }
-        particle.style.background = "gold";
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-        );
-      });
-
-      input4.addEventListener("change", function(event) {
-        var m_color;
-        console.log(event);
-        console.log("input4,", event.target.value);
-        if (event.target.checked) {
-          metal = event.target.value;
+        if (medium === 'glass') {
+          document.querySelector("#medium1").checked = true
         }
-        particle.style.background = "silver";
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-        );
-      });
+        // evt.target.setAttribute("data-color", newColor);
+        // evt.target.style.fill = newColor;
 
-      input5.addEventListener("change", function(event) {
-        var sol_color;
-        console.log(event);
-        console.log("input5", event.target.value);
-        if (event.target.checked) {
-          solution = event.target.value;
-        }
-        top_ctl.style.background = "grey";
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-        );
-      });
+      }
+    });
 
-      input6.addEventListener("change", function(event) {
-        var sol_color;
-        console.log(event);
-        console.log("input6", event.target.value);
-        if (event.target.checked) {
-          solution = event.target.value;
-        }
-        top_ctl.style.background = "blue";
-        bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-        clicked_target.setAttribute(
-          "color",
-          "rgb(" + r + "," + g + "," + b + ")"
-        );
-      });
-      ///bottom_ctl.style.background = 'rgb(200,5,200)';
-      //   bottom_ctl.style.background = 'rgb('+r + ',' + g + ',' + b+')';
-      // length.onclick = function() {
-      //   //if input.value is int
 
-      //   var par_len = input.value;
-      //   console.log(par_len);
-      //   input.value = '';
-      //   particle.style.width = par_len+'px';
-      // }
+    input.addEventListener("change", function (event) {
+      console.log(event);
+      console.log(event.target.value);
 
-      // radius.onclick = function() {
-      //   //if input.value is int
+      l_index = parseInt(event.target.value);
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
+      //bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
 
-      //   var par_rad = input2.value;
-      //   console.log(par_rad);
-      //   input2.value = '';
-      //   particle.style.borderRadius = par_rad+'px';
-      //   particle.style.height = 2*par_rad+'px'
-      // }
 
-      /*     metal.onclick = function(){
-      var gold = document.getElementById('metal');
-      var silver = document.getElementById('metal2');
+      //get the selected item
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      //console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+
+    });
+
+    input2.addEventListener("change", function (event) {
+      console.log(event);
+      console.log("input2,", event.target.value);
+      // particle.style.borderRadius = event.target.value + "px";
+      // particle.style.height = 2 * event.target.value + "px";
+      r_index = parseInt(event.target.value);
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
+      // bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+
+
+
+    });
+
+    input3.addEventListener("change", function (event) {
       var m_color;
-      if (gold.checked) {
-        m_color = gold.value;
+      console.log(event);
+      console.log("input3,", event.target.value);
+      if (event.target.checked) {
+        metal = event.target.value;
       }
-      if (silver.checked) {
-        m_color = silver.value;
+      svg.querySelector(".selected").setAttribute("metal", metal)
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
+
+      //get the selected item
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+    });
+
+    input4.addEventListener("change", function (event) {
+      var m_color;
+      console.log(event);
+      console.log("input4,", event.target.value);
+      if (event.target.checked) {
+        metal = event.target.value;
       }
-      particle.style.background = m_color;
-    }
-//  */
-      //     function changeRadio(){
-      //       console.log('123');
-      //     }
+      svg.querySelector(".selected").setAttribute("metal", metal)
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
 
-      //     var metal_color = document.getElementById("metal");
-      //     metal_color.addEventListener("RadioStateChange",changeRadio , false);
+      //get the selected item
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+    });
 
-      //     solution.onclick = function(){
-      //       var glass = document.getElementById('solution1');
-      //       var water = document.getElementById('solution2');
-      //       var sol_color;
-      //       if (glass.checked) {
-      //         sol_color = glass.value;
-      //       }
-      //       if (water.checked) {
-      //         sol_color = water.value;
-      //       }
-      //       console.log(sol_color)
-      //       top_ctl.style.background = sol_color
-      //     }
-    </script>
-  </body>
+    input5.addEventListener("change", function (event) {
+      var sol_color;
+      console.log(event);
+      console.log("input5", event.target.value);
+      if (event.target.checked) {
+        medium = event.target.value;
+      }
+      svg.querySelector(".selected").setAttribute("medium", medium)
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
+
+      //get the selected item
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+    });
+
+    input6.addEventListener("change", function (event) {
+      var sol_color;
+      console.log(event);
+      console.log("input6", event.target.value);
+      if (event.target.checked) {
+        medium = event.target.value;
+      }
+      svg.querySelector(".selected").setAttribute("medium", medium)
+      r = color_map[metal + "_" + medium].R[l_index][r_index];
+      g = color_map[metal + "_" + medium].G[l_index][r_index];
+      b = color_map[metal + "_" + medium].B[l_index][r_index];
+
+      //get the selected item
+      const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+      console.log(selected_target);
+      const newColor = "rgb(" + r + "," + g + "," + b + ")";
+      //set color for 3D particle
+      cylinder.setAttribute("color", newColor)
+      //set color for svg
+      selected_target.style.fill = newColor;
+      //store the current color
+      selected_target.setAttribute("data-color", newColor);
+    });
+
+  </script>
+</body>
+
 </html>
