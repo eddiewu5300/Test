@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1280"
+   height="800"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="bubble-pack-2.svg">
+  <metadata
+     id="metadata406">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs404" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview402"
+     showgrid="false"
+     inkscape:zoom="0.25546875"
+     inkscape:cx="640"
+     inkscape:cy="400"
+     inkscape:window-x="1132"
+     inkscape:window-y="748"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <xhtml:defs>
+    <xhtml:style
+       type="text/css"><![CDATA[
+body { background: url("texture-noise.png"); overflow: hidden; margin: 0px; font-size: 14px; font-family: "Helvetica Neue", Helvetica; }
+#chart, #header, #footer { position: absolute; top: 0px; }
+#header, #footer { z-index: 1; display: block; font-size: 36px; font-weight: 300; text-shadow: rgb(255, 255, 255) 0px 1px 0px; }
+#header.inverted, #footer.inverted { color: rgb(255, 255, 255); text-shadow: rgb(0, 0, 0) 0px 1px 4px; }
+#header { top: 80px; left: 140px; width: 1000px; }
+#footer { top: 680px; right: 140px; text-align: right; }
+rect { fill: none; pointer-events: all; }
+pre { font-size: 18px; }
+line { stroke: rgb(0, 0, 0); stroke-width: 1.5px; }
+.string, .regexp { color: rgb(255, 51, 153); }
+.keyword { color: rgb(0, 0, 204); }
+.comment { color: rgb(119, 119, 119); font-style: oblique; }
+.number { color: rgb(51, 102, 153); }
+.class, .special { color: rgb(17, 129, 184); }
+a:link, a:visited { color: rgb(0, 0, 0); text-decoration: none; }
+a:hover { color: rgb(102, 102, 102); }
+.hint { position: absolute; right: 0px; width: 1280px; font-size: 12px; color: rgb(153, 153, 153); }
+circle { stroke: rgb(0, 0, 0); stroke-opacity: 0.5; }]]></xhtml:style>
+  </xhtml:defs>
+  <circle
+     r="11.045679800197718"
+     style="fill: rgb(31, 119, 180);"
+     cx="541.0999976968703"
+     cy="316.48781689088895"
+     id="circle4" />
+  <circle
+     r="9.868139662218065"
+     style="fill: rgb(255, 127, 14);"
+     cx="685.8469132165706"
+     cy="547.2951560041399"
+     id="circle6" />
+  <circle
+     r="6.553059134676495"
+     style="fill: rgb(44, 160, 44);"
+     cx="572.2412456088289"
+     cy="472.78284294779024"
+     id="circle8" />
+  <circle
+     r="3.3115742635388026"
+     style="fill: rgb(31, 119, 180);"
+     cx="570.2592429470855"
+     cy="374.387531350797"
+     id="circle10" />
+  <circle
+     r="7.110469474666923"
+     style="fill: rgb(255, 127, 14);"
+     cx="561.9892402844454"
+     cy="362.5899654404029"
+     id="circle12" />
+  <circle
+     r="12.050910416505277"
+     style="fill: rgb(44, 160, 44);"
+     cx="548.2257781727496"
+     cy="509.75207850141817"
+     id="circle14" />
+  <circle
+     r="3.0520262855475"
+     style="fill: rgb(31, 119, 180);"
+     cx="600.3370378394056"
+     cy="441.2946899771981"
+     id="circle16" />
+  <circle
+     r="11.497544824299382"
+     style="fill: rgb(255, 127, 14);"
+     cx="669.7819548465379"
+     cy="296.1724228542414"
+     id="circle18" />
+  <circle
+     r="12.097937648194069"
+     style="fill: rgb(44, 160, 44);"
+     cx="678.2207715268581"
+     cy="502.6813516904512"
+     id="circle20" />
+  <circle
+     r="6.267988601646287"
+     style="fill: rgb(31, 119, 180);"
+     cx="559.395645575798"
+     cy="490.62019223311046"
+     id="circle22" />
+  <circle
+     r="7.771913479609109"
+     style="fill: rgb(255, 127, 14);"
+     cx="683.4471905597127"
+     cy="525.7661493723966"
+     id="circle24" />
+  <circle
+     r="4.986108479669609"
+     style="fill: rgb(44, 160, 44);"
+     cx="663.2097781357686"
+     cy="420.7204616281735"
+     id="circle26" />
+
+</svg>

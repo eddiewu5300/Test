@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <div class="sample">
+
+
+  </div>
+  <script>
+    fetch('sample_svg/bubble-pack-2.svg')
+      .then(function (response) {
+      return response.text().then(function (text) {
+      document.querySelector(".sample").insertAdjacentHTML('afterBegin', text);
+      });
+    })
+
+
+  </script>
+</body>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="500"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="treemap.svg">
+  <metadata
+     id="metadata154">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs152" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview150"
+     showgrid="false"
+     inkscape:zoom="0.57848045"
+     inkscape:cx="250"
+     inkscape:cy="250"
+     inkscape:window-x="1026"
+     inkscape:window-y="809"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g78" />
+  <g
+     transform="translate(.5,.5)"
+     id="g4">
+    <g
+       class="cell"
+       transform="translate(10,10)"
+       id="g6">
+      <rect
+         width="65.51651412654198"
+         height="60"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect8" />
+      <title
+         id="title10">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(80.51651412654198,10)"
+       id="g14">
+      <rect
+         width="162.4767210505372"
+         height="60"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect16" />
+      <title
+         id="title18">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(247.99323517707919,10)"
+       id="g22">
+      <rect
+         width="47.887385594906476"
+         height="60"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect24" />
+      <title
+         id="title26">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(300.88062077198566,10)"
+       id="g30">
+      <rect
+         width="12.629128531635502"
+         height="60"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect32" />
+      <title
+         id="title34">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(10,85)"
+       id="g38">
+      <rect
+         width="72.12743732590529"
+         height="92.14285714285714"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect40" />
+      <title
+         id="title42">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(10,182.14285714285714)"
+       id="g46">
+      <rect
+         width="72.12743732590529"
+         height="67.85714285714286"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect48" />
+      <title
+         id="title50">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(87.12743732590529,85)"
+       id="g54">
+      <rect
+         width="182.3094906486271"
+         height="165"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect56" />
+      <title
+         id="title58">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(274.4369279745324,85)"
+       id="g62">
+      <rect
+         width="39.072821329088754"
+         height="165"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect64" />
+      <title
+         id="title66">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(10,265)"
+       id="g70">
+      <rect
+         width="74.88198865897334"
+         height="121.89655172413791"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect72" />
+      <title
+         id="title74">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(10,391.8965517241379)"
+       id="g78">
+      <rect
+         width="74.88198865897334"
+         height="98.10344827586209"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect80" />
+      <title
+         id="title82">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(89.88198865897334,265)"
+       id="g86">
+      <rect
+         width="2.144617520145246"
+         height="172.34939759036143"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect88" />
+      <title
+         id="title90">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(97.02660617911859,265)"
+       id="g94">
+      <rect
+         width="216.4831431245026"
+         height="172.34939759036143"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect96" />
+      <title
+         id="title98">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(89.88198865897334,442.34939759036143)"
+       id="g102">
+      <rect
+         width="223.62776064464776"
+         height="47.650602409638566"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect104" />
+      <title
+         id="title106">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(328.50974930362116,10)"
+       id="g110">
+      <rect
+         width="98.49393962207336"
+         height="135.1953125"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect112" />
+      <title
+         id="title114">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(432.0036889256945,10)"
+       id="g118">
+      <rect
+         width="57.99631107430548"
+         height="135.1953125"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect120" />
+      <title
+         id="title122">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(328.50974930362116,150.1953125)"
+       id="g126">
+      <rect
+         width="135.20231637589796"
+         height="66.9921875"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect128" />
+      <title
+         id="title130">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(468.7120656795191,150.1953125)"
+       id="g134">
+      <rect
+         width="21.287934320480872"
+         height="66.9921875"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect136" />
+      <title
+         id="title138">undefined: NaN</title>
+    </g>
+    <g
+       class="cell"
+       transform="translate(328.50974930362116,222.1875)"
+       id="g142">
+      <rect
+         width="161.49025069637884"
+         height="267.8125"
+         style="fill: rgb(191, 105, 105); stroke: rgb(255, 255, 255);"
+         id="rect144" />
+      <title
+         id="title146">undefined: NaN</title>
+    </g>
+  </g>
+</svg>
