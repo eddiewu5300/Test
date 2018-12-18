@@ -60,11 +60,11 @@
     Footer
     <div class="rod-length">
       <label for="item">Length:</label>
-      <input type="range" name="number" id="number1" min="0" max="55" />
+      <input type="range" name="number" id="number1" min="1" max="56" />
     </div>
     <div class="rod-radius">
       <label for="item">Radius:</label>
-      <input type="range" name="number" id="number2" min="0" max="15" />
+      <input type="range" name="number" id="number2" min="1" max="16" />
     </div>
     <div class="metal-comp">
       <label for="item">Metal:</label><br />
@@ -110,7 +110,7 @@
 
           // listen the selected item and store the color, value in class
           svg.addEventListener("click", function (evt) {
-            console.log(evt.target);
+            //console.log(evt.target);
             const targetColor = evt.target.getAttribute("data-color");
 
             if (targetColor) {
@@ -128,7 +128,7 @@
                 .substring(4)
                 .split(",")
                 .map(d => Number(d));
-              console.log(rgb_value)
+              //console.log(rgb_value)
               r = rgb_value[0];
               g = rgb_value[1];
               b = rgb_value[2];
@@ -158,13 +158,23 @@
 
 
           input.addEventListener("change", function (event) {
-            console.log(event);
-            console.log(event.target.value);
+            //console.log(event);
+            //console.log(event.target.value);
 
             l_index = parseInt(event.target.value);
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
+            // checking if the ratio of L/R >2
+            var ratio_value = color_map[metal + "_" + medium].R[r_index][0];
+            var length_value = color_map[metal + "_" + medium].R[0][l_index];
+            var first_radius_value = color_map[metal + "_" + medium].R[1][0];
+            if (length_value/ratio_value < 2){
+              console.log("ratio of L/R < 2!!!")
+              r_index =Math.floor((length_value/2 - first_radius_value)/2) + 1
+              input2.value = r_index
+            }
+
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
             //bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
 
 
@@ -185,17 +195,26 @@
           });
 
           input2.addEventListener("change", function (event) {
-            console.log(event);
-            console.log("input2,", event.target.value);
-            // particle.style.borderRadius = event.target.value + "px";
-            // particle.style.height = 2 * event.target.value + "px";
+            //console.log(event);
+            //console.log("input2,", event.target.value);
+
             r_index = parseInt(event.target.value);
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
-            // bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
+
+            // checking if the ratio of L/R >2
+            var ratio_value = color_map[metal + "_" + medium].R[r_index][0];
+            var length_value = color_map[metal + "_" + medium].R[0][l_index];
+            var first_length_value = color_map[metal + "_" + medium].R[0][1];
+            if (length_value/ratio_value < 2){
+              console.log("ratio of L/R < 2!!!")
+              l_index = (ratio_value*2 - first_length_value)/2 + 1
+              input.value = l_index
+            }
+
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
             const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-            console.log(selected_target);
+            //console.log(selected_target);
             const newColor = "rgb(" + r + "," + g + "," + b + ")";
             //set color for 3D particle
             cylinder.setAttribute("color", newColor)
@@ -216,9 +235,9 @@
               metal = event.target.value;
             }
             svg.querySelector(".selected").setAttribute("metal", metal)
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
 
             //get the selected item
             const selected_target = document.querySelectorAll(".color-selector.selected")[0];
@@ -240,9 +259,9 @@
               metal = event.target.value;
             }
             svg.querySelector(".selected").setAttribute("metal", metal)
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
 
             //get the selected item
             const selected_target = document.querySelectorAll(".color-selector.selected")[0];
@@ -264,9 +283,9 @@
               medium = event.target.value;
             }
             svg.querySelector(".selected").setAttribute("medium", medium)
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
 
             //get the selected item
             const selected_target = document.querySelectorAll(".color-selector.selected")[0];
@@ -288,9 +307,9 @@
               medium = event.target.value;
             }
             svg.querySelector(".selected").setAttribute("medium", medium)
-            r = color_map[metal + "_" + medium].R[l_index][r_index];
-            g = color_map[metal + "_" + medium].G[l_index][r_index];
-            b = color_map[metal + "_" + medium].B[l_index][r_index];
+            r = color_map[metal + "_" + medium].R[r_index][l_index];
+            g = color_map[metal + "_" + medium].G[r_index][l_index];
+            b = color_map[metal + "_" + medium].B[r_index][l_index];
 
             //get the selected item
             const selected_target = document.querySelectorAll(".color-selector.selected")[0];
@@ -305,8 +324,6 @@
           });
         })
       });
-
-
 
   </script>
 </body>
