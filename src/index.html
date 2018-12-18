@@ -101,16 +101,18 @@
     var medium = "glass";
     var svg = null;
 
+    // get the exteranl svg file and parse it into DOM
     fetch('rec.svg')
       .then(function (response) {
         return response.text().then(function (text) {
           document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
           svg = document.querySelector("#mysvg");
 
-
+          // listen the selected item and store the color, value in class
           svg.addEventListener("click", function (evt) {
             console.log(evt.target);
             const targetColor = evt.target.getAttribute("data-color");
+
             if (targetColor) {
               // console.log(evt.target.getAttribute("data-color"))
               Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
@@ -119,7 +121,7 @@
               })
               //set up the selected item's attribute at css
               evt.target.classList.add("selected");
-              cylinder.setAttribute("color", targetColor)
+              cylinder.setAttribute("color", targetColor);
 
               rgb_value = targetColor
                 .substring(0, targetColor.length - 1)
@@ -130,17 +132,24 @@
               r = rgb_value[0];
               g = rgb_value[1];
               b = rgb_value[2];
-              metal = evt.target.getAttribute("metal")
+
+              l_index = parseInt(evt.target.getAttribute("l_index"));
+              r_index = parseInt(evt.target.getAttribute("r_index"));
+
+              metal = evt.target.getAttribute("metal");
               //console.log(metal)
-              medium = evt.target.getAttribute("medium")
+              medium = evt.target.getAttribute("medium");
               //console.log(medium)
+
+              input.value = l_index;
+              input2.value = r_index;
 
               if (metal === 'Au') {
                 document.querySelector("#metal1").checked = true
-              }
+              };
               if (medium === 'glass') {
                 document.querySelector("#medium1").checked = true
-              }
+              };
               // evt.target.setAttribute("data-color", newColor);
               // evt.target.style.fill = newColor;
 
@@ -169,6 +178,9 @@
             selected_target.style.fill = newColor;
             //store the current color
             selected_target.setAttribute("data-color", newColor);
+            //store the current length and radius index
+            selected_target.setAttribute("l_index", l_index);
+            selected_target.setAttribute("r_index", r_index);
 
           });
 
@@ -191,6 +203,9 @@
             selected_target.style.fill = newColor;
             //store the current color
             selected_target.setAttribute("data-color", newColor);
+            //store the current length and radius index
+            selected_target.setAttribute("l_index", l_index);
+            selected_target.setAttribute("r_index", r_index);
           });
 
           input3.addEventListener("change", function (event) {
