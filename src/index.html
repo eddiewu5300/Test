@@ -16,6 +16,10 @@
   <link rel="apple-touch-icon" href="icon.png" />
 
   <link rel="stylesheet" href="css/main-flex.css" />
+
+
+  <script src="https://unpkg.com/hammer-touchemulator@0.0.2/touch-emulator.js"></script>
+  <script>TouchEmulator();</script>
 </head>
 
 <body>
@@ -105,7 +109,7 @@
     const loadSVG = async () => {
       const response = await fetch('rec.svg');
       const text = await response.text();
-      console.log(text, 'texttexttext');
+      // console.log(text, 'texttexttext');
       document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
       svg = document.querySelector("#mysvg");
 
