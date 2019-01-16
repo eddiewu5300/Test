@@ -10,11 +10,12 @@
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
   <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <script type="text/javascript" src="color-map.js"></script>
   <script type="text/javascript" src="Ag_Au_rod_water_glass_simul.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="manifest" href="site.webmanifest" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="css/main-flex.css" />
@@ -25,123 +26,117 @@
 </head>
 
 <body>
+  <div class="wrapper">
+    <header>
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="history-but" type="button">History of Stained
+        Glass</button>
+      <dialog class="mdl-dialog" id="history-dia">
+        <h1 class="mdl-dialog__title">History of Stained Glass</h1>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button close">close</button>
+        </div>
+      </dialog>
 
-  <header>Header</header>
-  <div class="container">
-    <div class="left-box">
-      <div class="top-ctl">
-        <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC" outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
-          <a-cylinder id="cylinder" color="crimson" height="1" radius="1" theta-start="50" rotation="45"
-            cursor-listener></a-cylinder>
+      <button id="science-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
+        Science of Stained Glass</button>
+      <dialog class="mdl-dialog" id="science-dia">
+        <h2 class="mdl-dialog__title">Science of Stained Glass</h2>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button close">close</button>
+        </div>
 
-          <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 0 3"></a-entity>
-          <a-entity cursor="rayOrigin: mouse"></a-entity>
-        </a-scene>
+
+      </dialog>
+
+      <button id="scientist-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
+        Meet the Scientist</button>
+      <dialog class="mdl-dialog" id="scientist-dia">
+        <h3 class="mdl-dialog__title">Meet the Scientist</h3>
+        <div class="mdl-dialog__actions">
+          <!-- <button type="button" class="mdl-button close">close</button> -->
+          <button class="mdl-button close mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+
+
+      </dialog>
+    </header>
+    <div class="container">
+      <div class="left-box">
+        <div class="top-ctl">
+          <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC" outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
+            <a-cylinder id="cylinder" color="crimson" height="1" radius="1" theta-start="50" rotation="45"
+              cursor-listener></a-cylinder>
+
+            <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 0 3"></a-entity>
+            <a-entity cursor="rayOrigin: mouse"></a-entity>
+          </a-scene>
+        </div>
+        <div class="bottom-ctl"></div>
       </div>
-      <div class="bottom-ctl"></div>
+      <div class="content" id="my-stain-glass">
+        <!-- <svg id="mysvg" width="500" height="300">
+          <rect x="10" y="20" width="90" height="60" class="color-selector" data-color="rgb(255,0,0)" metal="Au" medium="glass"
+            style="fill:rgb(255,0,0);">
+
+          </rect>
+          <rect x="10" y="120" width="90" height="60" class="color-selector" data-color="rgb(0,255,0)" metal="Au" medium="glass"
+            style="fill:rgb(0,255,0);">
+
+          </rect>
+          <rect x="10" y="220" width="90" height="60" class="color-selector" data-color="rgb(0,0,255)" metal="Au" medium="glass"
+            style="fill:rgb(0,0,255);">
+
+
+          </rect>
+          Sorry, your browser does not support inline SVG.
+        </svg> -->
+
+        <!-- <object id="svg" data="rec.svg" type="image/svg+xml"></object> -->
+
+      </div>
     </div>
-    <div class="content" id="my-stain-glass">
-      <!-- <svg id="mysvg" width="500" height="300">
-        <rect x="10" y="20" width="90" height="60" class="color-selector" data-color="rgb(255,0,0)" metal="Au" medium="glass"
-          style="fill:rgb(255,0,0);">
 
-        </rect>
-        <rect x="10" y="120" width="90" height="60" class="color-selector" data-color="rgb(0,255,0)" metal="Au" medium="glass"
-          style="fill:rgb(0,255,0);">
+    <div class="bar-ctl">
+      <div class="rod-length">
+        <label for="item">Length:</label>
+        <input type="range" name="number" id="number1" min="1" max="51" value="25" />
+        <!-- <input class="mdl-slider mdl-js-slider" id="number1" type="range" min="1" max="56" value="28" > -->
+      </div>
+      <div class="rod-radius">
+        <label for="item">Radius:</label>
+        <input type="range" name="number" id="number2" min="1" max="24" value="12" />
+        <!-- <input class="mdl-slider mdl-js-slider" id="number2" type="range" min="1" max="16" value="8" > -->
+      </div>
 
-        </rect>
-        <rect x="10" y="220" width="90" height="60" class="color-selector" data-color="rgb(0,0,255)" metal="Au" medium="glass"
-          style="fill:rgb(0,0,255);">
-
-
-        </rect>
-        Sorry, your browser does not support inline SVG.
-      </svg> -->
-
-      <!-- <object id="svg" data="rec.svg" type="image/svg+xml"></object> -->
-
+      <div class="metal-comp">
+        <label for="item">Metal:</label><br />
+        <div>
+          <input type="radio" name="metal" id="metal1" value="Au" checked />Gold
+          <input type="radio" name="metal" id="metal2" value="Ag" /> Silver
+        </div>
+        <!-- <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="item-1">
+          <input type="radio" id="metal1" class="mdl-radio__button" name="options" value="Au" checked>
+          <span class="mdl-radio__label">Gold</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="item-2">
+          <input type="radio" id="metal2" class="mdl-radio__button" name="options" value="Ag">
+          <span class="mdl-radio__label">Silver</span>
+        </label> -->
+      </div>
+      <div class="medium-comp">
+        <label for="item">Medium:</label><br />
+        <div>
+          <input type="radio" name="medium" id="medium1" value="glass" class="mdl-radio__button" checked />Glass
+          <input type="radio" name="medium" id="medium2" value="water" class="mdl-radio__button" /> Water
+        </div>
+      </div>
     </div>
+
+    <footer>
+    </footer>
   </div>
-
-  <div class="bar-ctl">
-    <div class="rod-length">
-      <label for="item">Length:</label>
-      <input type="range" name="number" id="number1" min="1" max="51" />
-      <!-- <input class="mdl-slider mdl-js-slider" id="number1" type="range" min="1" max="56" value="28" > -->
-    </div>
-    <div class="rod-radius">
-      <label for="item">Radius:</label>
-      <input type="range" name="number" id="number2" min="1" max="24" />
-      <!-- <input class="mdl-slider mdl-js-slider" id="number2" type="range" min="1" max="16" value="8" > -->
-    </div>
-
-    <div class="metal-comp">
-      <label for="item">Metal:</label><br />
-      <input type="radio" name="metal" id="metal1" value="Au" checked />Gold
-      <input type="radio" name="metal" id="metal2" value="Ag" /> Silver
-      <!-- <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="item-1">
-        <input type="radio" id="metal1" class="mdl-radio__button" name="options" value="Au" checked>
-        <span class="mdl-radio__label">Gold</span>
-      </label>
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="item-2">
-        <input type="radio" id="metal2" class="mdl-radio__button" name="options" value="Ag">
-        <span class="mdl-radio__label">Silver</span>
-      </label> -->
-    </div>
-    <div class="medium-comp">
-      <label for="item">Medium:</label><br />
-      <input type="radio" name="medium" id="medium1" value="glass" class="mdl-radio__button" checked />Glass
-      <input type="radio" name="medium" id="medium2" value="water" class="mdl-radio__button" /> Water
-    </div>
-  </div>
-
-  <footer>
-    <button id="history-but" type="button" class="mdl-button show-modal">History of Stained Glass</button>
-    <dialog class="mdl-dialog" id="history-dia">
-      <h1 class="mdl-dialog__title">History of Stained Glass</h1>
-      <!-- <div class="mdl-dialog__content">
-          <p>
-            Allowing us to collect data will let us get you the information you want faster.
-          </p>
-        </div>
-        <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button">Agree</button>
-          <button type="button" class="mdl-button close">Disagree</button>
-        </div> -->
-    </dialog>
-
-    <button id="science-but" type="button" class="mdl-button">Science of Stained Glass</button>
-    <dialog class="mdl-dialog" id="science-dia">
-      <h2 class="mdl-dialog__title">Science of Stained Glass</h2>
-      <!-- <div class="mdl-dialog__content">
-          <p>
-            Allowing us to collect data will let us get you the information you want faster.
-          </p>
-        </div>
-        <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button">Agree</button>
-          <button type="button" class="mdl-button close">Disagree</button>
-        </div> -->
-    </dialog>
-
-    <button id="scientist-but" type="button" class="mdl-button">Meet the Scientist</button>
-    <dialog class="mdl-dialog" id="scientist-dia">
-      <h2 class="mdl-dialog__title">Meet the Scientist</h2>
-      <!-- <div class="mdl-dialog__content">
-          <p>
-            Allowing us to collect data will let us get you the information you want faster.
-          </p>
-        </div>
-        <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button">Agree</button>
-          <button type="button" class="mdl-button close">Disagree</button>
-        </div> -->
-    </dialog>
-
-
-
-  </footer>
-
   <script>
     var history_dia = document.querySelector('#history-dia');
     var science_dia = document.querySelector('#science-dia');
@@ -165,6 +160,7 @@
       dialogPolyfill.registerDialog(history_dia);
     }
     history_but.addEventListener('click', function () {
+      console.log("history");
       history_dia.showModal();
     });
     history_dia.querySelector('.close').addEventListener('click', function () {
@@ -177,6 +173,7 @@
       dialogPolyfill.registerDialog(scientist_dia);
     }
     scientist_but.addEventListener('click', function () {
+      console.log("scientist");
       scientist_dia.showModal();
     });
     scientist_dia.querySelector('.close').addEventListener('click', function () {
@@ -260,6 +257,12 @@
           };
           if (medium === 'glass') {
             document.querySelector("#medium1").checked = true
+          };
+          if (metal === 'Ag') {
+            document.querySelector("#metal2").checked = true
+          };
+          if (medium === 'water') {
+            document.querySelector("#medium2").checked = true
           };
 
           num_rows = color_map[metal + "_" + medium].R.length - 1;
