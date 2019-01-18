@@ -112,64 +112,88 @@ header {
   border-top: 2px solid transparent;
 }
 
-button {
-  /* height: 40px; */
-  flex: 1;
-  text-align: center;
-}
 
-#history-but{
-  height: 100%;
-  flex:1;
-  text-align: center;
-}
-
-#science-but{
-  height: 100%;
-  flex:1;
-  text-align: center;
-}
-
+#history-but,
+#science-but,
 #scientist-but{
+
   height: 100%;
   flex:1;
   text-align: center;
 }
 
-#history-dia{
-  display: flex;
-
-  flex-direction: row;
-  height: 60%;
-  width: 60%;
-}
-#history-head{
-  flex:2;
-}
-#history-content{
-  flex:5;
-}
-#history-img{
-  flex:1;
-}
-#history-close{
-  flex:0.5;
-  align-items: flex-end
-}
-
-
-#science-dia{
-  height: 60%;
-  width: 60%;
-}
-
+#history-dia,
+#science-dia,
 #scientist-dia{
   height: 60%;
   width: 60%;
 }
+#history-dia .container{
+  display: flex;
+  border:transparent;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+#history-head{
+  flex:1;
+}
+#history-content{
+  flex:2;
+}
+#history-img{
+  flex:4;
+}
+#history-close{
+  flex:1;
+
+}
+
+#science-dia .container{
+  display: flex;
+  border:transparent;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+#science-head{
+  flex:1;
+}
+#science-content{
+  flex:2;
+}
+#science-img{
+  flex:4;
+}
+#history-close{
+  flex:1;
+}
+
+#scientist-dia .container{
+  display: flex;
+  border:transparent;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+#scientist-head{
+  flex:1;
+}
+#scientist-content{
+  flex:2;
+}
+#scientist-video{
+  flex:4;
+}
+#scientist-close{
+  flex:1;
+}
+
 
 .close {
   height: 40px;
+  width: 100%;
+  flex:1;
 }
 
 .container {

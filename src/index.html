@@ -31,40 +31,57 @@
       <button class="mdl-button mdl-js-button mdl-button--raised" id="history-but" type="button">History of Stained
         Glass</button>
       <dialog class="mdl-dialog" id="history-dia">
-        <h1 id="history-head" class="mdl-dialog__title">History of Stained Glass</h1>
-        <div>
-          <p id="history-content">
-            content
-          </p>
-          <img id="history-img">
-        </div>
-        <div class="mdl-dialog__actions">
-          <button id="history-close" type="button" class="mdl-button close">close</button>
+        <div class="container">
+          <h1 id="history-head" class="mdl-dialog__title">History of Stained Glass</h1>
+          <img id="history-img" src="/media/grapefruit-slice-332-332.jpg" alt="Grapefruit slice atop a pile of other slices" />
+          <div>
+            <p id="history-content">content</p>
+          </div>
+          <div class="mdl-dialog__actions">
+            <button id="history-close" type="button" class="mdl-button close">close</button>
+          </div>
         </div>
       </dialog>
 
       <button id="science-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
         Science of Stained Glass</button>
       <dialog class="mdl-dialog" id="science-dia">
-        <h2 class="mdl-dialog__title">Science of Stained Glass</h2>
-        <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button close">close</button>
+        <div class="container">
+          <h2 id="science-head" class="mdl-dialog__title">Science of Stained Glass</h2>
+          <img id="science-img" src="/media/grapefruit-slice-332-332.jpg"
+          alt="Grapefruit slice atop a pile of other slices" />
+          <div>
+              <p id="science-content">content</p>
+          </div>
+          <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close">close</button>
+          </div>
         </div>
-
 
       </dialog>
 
       <button id="scientist-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
         Meet the Scientist</button>
       <dialog class="mdl-dialog" id="scientist-dia">
-        <h3 class="mdl-dialog__title">Meet the Scientist</h3>
-        <div class="mdl-dialog__actions">
-          <!-- <button type="button" class="mdl-button close">close</button> -->
-          <button class="mdl-button close mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-            <i class="material-icons">close</i>
-          </button>
-        </div>
+        <div class="container">
+          <h3 id="scientist-head" class="mdl-dialog__title">Meet the Scientist</h3>
 
+          <video controls id="scientist-video">
+            <source src="myVideo.mp4" type="video/mp4">
+            <source src="myVideo.webm" type="video/webm">
+            <p>Your browser doesn't support HTML5 video. Here is
+              a <a href="myVideo.mp4">link to the video</a> instead.</p>
+          </video>
+          <div>
+              <p id="scientist-content">content</p>
+          </div>
+          <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close">close</button>
+            <!-- <button class="mdl-button close mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                <i class="material-icons">close</i>
+              </button> -->
+          </div>
+        </div>
 
       </dialog>
     </header>
