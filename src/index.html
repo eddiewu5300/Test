@@ -208,7 +208,7 @@
 
     // get the exteranl svg file and parse it into DOM
     const loadSVG = async () => {
-      const response = await fetch('rec.svg');
+      const response = await fetch('sample_svg/new.svg');
       const text = await response.text();
       // console.log(text, 'texttexttext');
       document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
@@ -216,9 +216,10 @@
 
       // listen the selected item and store the color, value in class
       svg.addEventListener("click", function (evt) {
-        //console.log(evt.target);
+
         const targetColor = evt.target.getAttribute("data-color");
 
+        //if the item is selected and
         if (targetColor) {
           // console.log(evt.target.getAttribute("data-color"))
           Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
@@ -241,8 +242,6 @@
 
           l_index = parseInt(evt.target.getAttribute("l_index"));
           r_index = parseInt(evt.target.getAttribute("r_index"));
-
-
 
           metal = evt.target.getAttribute("metal");
           //console.log(metal)
