@@ -84,11 +84,13 @@
     <div class="container">
       <div class="left-box">
         <div class="top-ctl">
-          <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC" outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
+          <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC"
+          outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
             <a-cylinder id="cylinder" color="crimson" height="51" radius="15" theta-start="0" rotation="90"
               cursor-listener></a-cylinder>
 
-            <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 120; maxDistance: 120; initialPosition: 120 0 0"></a-entity>
+            <a-entity camera  orbit-controls="target: 0 0 0; enableRotate: false; minDistance: 200;
+            maxDistance: 200; initialPosition: 200 0 0"></a-entity>
             <a-entity cursor="rayOrigin: mouse"></a-entity>
           </a-scene>
         </div>
@@ -334,10 +336,6 @@
           selected_target.setAttribute("l_index", l_index);
           selected_target.setAttribute("r_index", r_index);
         }
-
-
-
-
       });
 
       input2.addEventListener("change", function (event) {
