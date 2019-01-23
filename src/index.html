@@ -30,10 +30,10 @@
     <div class="left-box">
       <div class="top-ctl">
         <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC" outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
-          <a-cylinder id="cylinder" color="crimson" height="1" radius="1" theta-start="90" rotation="90"
+          <a-cylinder id="cylinder" color="crimson" height="50" radius="15" theta-start="0" rotation="90"
             cursor-listener></a-cylinder>
 
-          <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 10; maxDistance: 10; initialPosition: 10 0 0"></a-entity>
+          <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 120; maxDistance: 120; initialPosition: 120 0 0"></a-entity>
           <a-entity cursor="rayOrigin: mouse"></a-entity>
         </a-scene>
       </div>
@@ -70,7 +70,7 @@
     </div>
     <div class="rod-radius">
       <label for="item">Radius:</label>
-      <input type="range" name="number" id="number2" min="1" max="24" value="0.5"/>
+      <input type="range" name="number" id="number2" min="1" max="24" value="1"/>
       <!-- <input class="mdl-slider mdl-js-slider" id="number2" type="range" min="1" max="16" value="8" > -->
     </div>
 
@@ -202,13 +202,14 @@
     var r = 0;
     var g = 0;
     var b = 0;
-    var l_index = 0;
-    var r_index = 0;
+    var l_index = 1;
+    var r_index = 1;
     var metal = "Au";
     var medium = "glass";
     var svg = null;
     var num_rows = null;
     var num_columns = null;
+
 
     // get the exteranl svg file and parse it into DOM
     const loadSVG = async () => {
@@ -270,17 +271,15 @@
           input.value = l_index;
           input2.value = r_index;
 
-          var first_radius_value = color_map[metal + "_" + medium].R[1][0];
-          console.log("rad int",first_radius_value)
-          var first_length_value = color_map[metal + "_" + medium].R[0][1];
+          const first_radius_value = color_map[metal + "_" + medium].R[1][0];
+          // console.log("rad int",first_radius_value)
+          const first_length_value = color_map[metal + "_" + medium].R[0][1];
           // console.log("length int",first_length_value)
-          var radius_value = color_map[metal + "_" + medium].R[r_index][0];
-          var length_value = color_map[metal + "_" + medium].R[0][l_index];
-
-
+          const radius_value = color_map[metal + "_" + medium].R[r_index][0];
+          const length_value = color_map[metal + "_" + medium].R[0][l_index];
           console.log("rad val",radius_value)
-          var par_height = length_value/first_length_value
-          var par_radius =radius_value/first_radius_value
+          const par_height = length_value
+          const par_radius =radius_value
 
           console.log("height radius", par_height,par_radius)
           cylinder.setAttribute("height",par_height)
@@ -299,32 +298,46 @@
         // checking if the radius of L/R >2
         var radius_value = color_map[metal + "_" + medium].R[r_index][0];
         var length_value = color_map[metal + "_" + medium].R[0][l_index];
-        var first_radius_value = color_map[metal + "_" + medium].R[1][0];
+        const first_radius_value = color_map[metal + "_" + medium].R[1][0];
         if (length_value / radius_value < 2) {
           console.log("ratio of L/R < 2!!!")
           r_index = Math.floor((length_value / 2 - first_radius_value) / 2) + 1
           input2.value = r_index
+          radius_value =  color_map[metal + "_" + medium].R[r_index][0];
         }
+        const par_height = length_value;
+        const par_radius = radius_value;
+
+        console.log("height radius", par_height,par_radius)
+        cylinder.setAttribute("height",par_height)
+        // cylinder.setAttribute("radius",par_radius)
+
 
         r = color_map[metal + "_" + medium].R[r_index][l_index];
         g = color_map[metal + "_" + medium].G[r_index][l_index];
         b = color_map[metal + "_" + medium].B[r_index][l_index];
         //bottom_ctl.style.background = "rgb(" + r + "," + g + "," + b + ")";
-
-
-        //get the selected item
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        //console.log(selected_target);
         const newColor = "rgb(" + r + "," + g + "," + b + ")";
-        //set color for 3D particle
         cylinder.setAttribute("color", newColor)
-        //set color for svg
-        selected_target.style.fill = newColor;
-        //store the current color
-        selected_target.setAttribute("data-color", newColor);
-        //store the current length and radius index
-        selected_target.setAttribute("l_index", l_index);
-        selected_target.setAttribute("r_index", r_index);
+        //get the selected item
+
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+          //console.log(selected_target);
+
+          //set color for 3D particle
+
+          //set color for svg
+        if(selected_target){
+          selected_target.style.fill = newColor;
+          //store the current color
+          selected_target.setAttribute("data-color", newColor);
+          //store the current length and radius index
+          selected_target.setAttribute("l_index", l_index);
+          selected_target.setAttribute("r_index", r_index);
+        }
+
+
+
 
       });
 
@@ -342,16 +355,24 @@
           console.log("ratio of L/R < 2!!!")
           l_index = (radius_value * 2 - first_length_value) / 2 + 1
           input.value = l_index
+          length_value = color_map[metal + "_" + medium].R[0][l_index];
         }
+
+        const par_height = length_value
+        const par_radius =radius_value
+        console.log("height radius", par_height,par_radius)
+        // cylinder.setAttribute("height",par_height)
+        cylinder.setAttribute("radius",par_radius)
 
         r = color_map[metal + "_" + medium].R[r_index][l_index];
         g = color_map[metal + "_" + medium].G[r_index][l_index];
         b = color_map[metal + "_" + medium].B[r_index][l_index];
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        //console.log(selected_target);
         const newColor = "rgb(" + r + "," + g + "," + b + ")";
         //set color for 3D particle
         cylinder.setAttribute("color", newColor)
+
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+        if(selected_target){
         //set color for svg
         selected_target.style.fill = newColor;
         //store the current color
@@ -359,126 +380,163 @@
         //store the current length and radius index
         selected_target.setAttribute("l_index", l_index);
         selected_target.setAttribute("r_index", r_index);
+        }
       });
 
       input3.addEventListener("change", function (event) {
-        var m_color;
-        console.log(event);
-        console.log("input3,", event.target.value);
+        console.log(metal + "_" + medium)
         if (event.target.checked) {
           metal = event.target.value;
         }
-        svg.querySelector(".selected").setAttribute("metal", metal)
-        r = color_map[metal + "_" + medium].R[r_index][l_index];
-        g = color_map[metal + "_" + medium].G[r_index][l_index];
-        b = color_map[metal + "_" + medium].B[r_index][l_index];
-
-        //get the selected item
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        console.log(selected_target);
-        const newColor = "rgb(" + r + "," + g + "," + b + ")";
-        //set color for 3D particle
-        cylinder.setAttribute("color", newColor)
-        //set color for svg
-        selected_target.style.fill = newColor;
-        //store the current color
-        selected_target.setAttribute("data-color", newColor);
-
         num_rows = color_map[metal + "_" + medium].R.length - 1;
         num_columns = color_map[metal + "_" + medium].R[0].length - 1;
 
         input.max = num_columns;
         input2.max = num_rows;
+        if(r_index> input2.max){
+          r_index = input2.max
+        }
+        if(l_index> input.max){
+          l_index = input.max
+        }
+
+        r = color_map[metal + "_" + medium].R[r_index][l_index];
+        g = color_map[metal + "_" + medium].G[r_index][l_index];
+        b = color_map[metal + "_" + medium].B[r_index][l_index];
+
+
+        const newColor = "rgb(" + r + "," + g + "," + b + ")";
+
+        //set color for 3D particle
+        cylinder.setAttribute("color", newColor);
+
+        //get the selected item
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+        if(selected_target){
+        // console.log(selected_target);
+          svg.querySelector(".selected").setAttribute("metal", metal)
+          const newColor = "rgb(" + r + "," + g + "," + b + ")";
+          //set color for 3D particle
+          cylinder.setAttribute("color", newColor)
+          //set color for svg
+          selected_target.style.fill = newColor;
+          //store the current color
+          selected_target.setAttribute("data-color", newColor);
+        }
+
       });
 
       input4.addEventListener("change", function (event) {
-        var m_color;
-        console.log(event);
-        console.log("input4,", event.target.value);
+        console.log(metal + "_" + medium)
+
         if (event.target.checked) {
           metal = event.target.value;
+
         }
-        svg.querySelector(".selected").setAttribute("metal", metal)
+        num_rows = color_map[metal + "_" + medium].R.length - 1;
+        num_columns = color_map[metal + "_" + medium].R[0].length - 1;
+        input.max = num_columns;
+
+        input2.max = num_rows;
+
+        if(r_index> input2.max){
+          r_index = input2.max
+        }
+        if(l_index> input.max){
+          l_index = input.max
+        }
         r = color_map[metal + "_" + medium].R[r_index][l_index];
         g = color_map[metal + "_" + medium].G[r_index][l_index];
         b = color_map[metal + "_" + medium].B[r_index][l_index];
 
-        //get the selected item
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        console.log(selected_target);
         const newColor = "rgb(" + r + "," + g + "," + b + ")";
         //set color for 3D particle
         cylinder.setAttribute("color", newColor)
-        //set color for svg
-        selected_target.style.fill = newColor;
-        //store the current color
-        selected_target.setAttribute("data-color", newColor);
+        //get the selected item
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+        if(selected_target){
+          svg.querySelector(".selected").setAttribute("metal", metal);
+          // console.log(selected_target);
+          //set color for svg
+          selected_target.style.fill = newColor;
+          //store the current color
+          selected_target.setAttribute("data-color", newColor);
+        }
 
-        num_rows = color_map[metal + "_" + medium].R.length - 1;
-        num_columns = color_map[metal + "_" + medium].R[0].length - 1;
-
-        input.max = num_columns;
-        input2.max = num_rows;
       });
 
       input5.addEventListener("change", function (event) {
-        var sol_color;
-        console.log(event);
-        console.log("input5", event.target.value);
+        console.log(metal + "_" + medium)
+
         if (event.target.checked) {
           medium = event.target.value;
         }
-        svg.querySelector(".selected").setAttribute("medium", medium)
-        r = color_map[metal + "_" + medium].R[r_index][l_index];
-        g = color_map[metal + "_" + medium].G[r_index][l_index];
-        b = color_map[metal + "_" + medium].B[r_index][l_index];
-
-        //get the selected item
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        console.log(selected_target);
-        const newColor = "rgb(" + r + "," + g + "," + b + ")";
-        //set color for 3D particle
-        cylinder.setAttribute("color", newColor)
-        //set color for svg
-        selected_target.style.fill = newColor;
-        //store the current color
-        selected_target.setAttribute("data-color", newColor);
-
         num_rows = color_map[metal + "_" + medium].R.length - 1;
         num_columns = color_map[metal + "_" + medium].R[0].length - 1;
 
         input.max = num_columns;
         input2.max = num_rows;
+        if(r_index> input2.max){
+          r_index = input2.max
+        }
+        if(l_index> input.max){
+          l_index = input.max
+        }
+
+        r = color_map[metal + "_" + medium].R[r_index][l_index];
+        g = color_map[metal + "_" + medium].G[r_index][l_index];
+        b = color_map[metal + "_" + medium].B[r_index][l_index];
+
+        const newColor = "rgb(" + r + "," + g + "," + b + ")";
+        //set color for 3D particle
+        cylinder.setAttribute("color", newColor)
+        //get the selected item
+
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+        if(selected_target){
+          svg.querySelector(".selected").setAttribute("medium", medium)
+        //set color for svg
+          selected_target.style.fill = newColor;
+          //store the current color
+          selected_target.setAttribute("data-color", newColor);
+
+        }
       });
 
       input6.addEventListener("change", function (event) {
-        var sol_color;
-        console.log(event);
-        console.log("input6", event.target.value);
+        console.log(metal + "_" + medium)
         if (event.target.checked) {
           medium = event.target.value;
         }
-        svg.querySelector(".selected").setAttribute("medium", medium)
-        r = color_map[metal + "_" + medium].R[r_index][l_index];
-        g = color_map[metal + "_" + medium].G[r_index][l_index];
-        b = color_map[metal + "_" + medium].B[r_index][l_index];
-
-        //get the selected item
-        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
-        console.log(selected_target);
-        const newColor = "rgb(" + r + "," + g + "," + b + ")";
-        //set color for 3D particle
-        cylinder.setAttribute("color", newColor)
-        //set color for svg
-        selected_target.style.fill = newColor;
-        //store the current color
-        selected_target.setAttribute("data-color", newColor);
-
         num_rows = color_map[metal + "_" + medium].R.length - 1;
         num_columns = color_map[metal + "_" + medium].R[0].length - 1;
 
         input.max = num_columns;
         input2.max = num_rows;
+        if(r_index> input2.max){
+          r_index = input2.max
+        }
+        if(l_index> input.max){
+          l_index = input.max
+        }
+
+        r = color_map[metal + "_" + medium].R[r_index][l_index];
+        g = color_map[metal + "_" + medium].G[r_index][l_index];
+        b = color_map[metal + "_" + medium].B[r_index][l_index];
+        const newColor = "rgb(" + r + "," + g + "," + b + ")";
+        //set color for 3D particle
+        cylinder.setAttribute("color", newColor)
+
+        //get the selected item
+        const selected_target = document.querySelectorAll(".color-selector.selected")[0];
+        if(selected_target){
+          svg.querySelector(".selected").setAttribute("medium", medium)
+          //set color for svg
+          selected_target.style.fill = newColor;
+          //store the current color
+          selected_target.setAttribute("data-color", newColor);
+        }
+
       });
     }
 
