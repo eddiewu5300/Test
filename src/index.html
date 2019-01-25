@@ -20,8 +20,6 @@
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="css/main-flex.css" />
 
-
-
 </head>
 
 <body>
@@ -86,7 +84,7 @@
         <div class="top-ctl">
           <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC"
           outline="enabled: false; width: 5 5; range: 0 10; strength: 10; smooth: true;">
-            <a-cylinder id="cylinder" color="crimson" height="51" radius="15" theta-start="0" rotation="90"
+            <a-cylinder id="cylinder" color="crimson" height="51" radius="15" theta-start="90" rotation="90"
               cursor-listener></a-cylinder>
 
             <a-entity camera  orbit-controls="target: 0 0 0; enableRotate: false; minDistance: 200;
@@ -213,6 +211,18 @@
       // console.log(text, 'texttexttext');
       document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
       svg = document.querySelector("svg");
+
+      //add attribute to svg
+      if(svg){
+        Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
+            // console.log(d);
+            d.setAttribute("data-color","rgb(" + r + "," + g + "," + b + ")");
+            d.setAttribute("metal",metal);
+            d.setAttribute("medium",medium);
+            d.setAttribute("l_index",l_index);
+            d.setAttribute("r_index",r_index);
+          })
+      }
 
       // listen the selected item and store the color, value in class
       svg.addEventListener("click", function (evt) {
