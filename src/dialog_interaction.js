@@ -1,3 +1,13 @@
+//dialog interaction
+var history_dia = document.querySelector('#history-dia');
+var science_dia = document.querySelector('#science-dia');
+var scientist_dia = document.querySelector('#scientist-dia');
+var history_but = document.querySelector('#history-but');
+var science_but = document.querySelector('#science-but');
+var scientist_but = document.querySelector('#scientist-but');
+
+dialog_interaction();
+
 function dialog_interaction() {
   if (!science_dia.showModal) {
     dialogPolyfill.registerDialog(science_dia);

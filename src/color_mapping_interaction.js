@@ -1,4 +1,13 @@
-
+//color mapping interaction
+var top_ctl = document.querySelector(".top-ctl");
+var bottom_ctl = document.querySelector(".bottom-ctl");
+var input = document.querySelector("#number1");
+var input2 = document.querySelector("#number2");
+var input3 = document.getElementById("metal1");
+var input4 = document.getElementById("metal2");
+var input5 = document.querySelector("#medium1");
+var input6 = document.querySelector("#medium2");
+var cylinder = document.querySelector("#cylinder");
 
 var r = 0;
 var g = 0;
@@ -11,9 +20,8 @@ var svg = null;
 var num_rows = null;
 var num_columns = null;
 
-
 // get the exteranl svg file and parse it into DOM
-const loadSVG = async () => {
+async function loadSVG()  {
     const response = await fetch('rec.svg');
     const text = await response.text();
     // console.log(text, 'texttexttext');
@@ -343,4 +351,5 @@ const loadSVG = async () => {
     });
 }
 
+loadSVG();
 
