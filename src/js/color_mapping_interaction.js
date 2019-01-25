@@ -67,14 +67,10 @@ async function loadSVG()  {
         l_index = parseInt(evt.target.getAttribute("l_index"));
         r_index = parseInt(evt.target.getAttribute("r_index"));
 
-
-
         metal = evt.target.getAttribute("metal");
         //console.log(metal)
         medium = evt.target.getAttribute("medium");
         //console.log(medium)
-
-
 
         if (metal === 'Au') {
         document.querySelector("#metal1").checked = true
