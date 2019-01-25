@@ -212,7 +212,7 @@
       const text = await response.text();
       // console.log(text, 'texttexttext');
       document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
-      svg = document.querySelector("#mysvg");
+      svg = document.querySelector("svg");
 
       // listen the selected item and store the color, value in class
       svg.addEventListener("click", function (evt) {
