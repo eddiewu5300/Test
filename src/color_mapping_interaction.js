@@ -22,12 +22,23 @@ var num_columns = null;
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG()  {
-    const response = await fetch('rec.svg');
+    const response = await fetch('sample_svg/new.svg');
     const text = await response.text();
     // console.log(text, 'texttexttext');
     document.querySelector(".content").insertAdjacentHTML('afterBegin', text);
-    svg = document.querySelector("#mysvg");
+    svg = document.querySelector("svg");
 
+    //add attribute to svg
+    if(svg){
+      Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
+          // console.log(d);
+          d.setAttribute("data-color","rgb(" + r + "," + g + "," + b + ")");
+          d.setAttribute("metal",metal);
+          d.setAttribute("medium",medium);
+          d.setAttribute("l_index",l_index);
+          d.setAttribute("r_index",r_index);
+        })
+    }
     // listen the selected item and store the color, value in class
     svg.addEventListener("click", function (evt) {
     //console.log(evt.target);
