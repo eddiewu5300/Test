@@ -30,13 +30,14 @@ async function loadSVG()  {
 
     //add attribute to svg
     if(svg){
-      Array.from(svg.querySelectorAll(".color-selector")).forEach(d => {
+      svg.querySelectorAll(".color-selector").forEach(d => {
           // console.log(d);
           d.setAttribute("data-color","rgb(" + r + "," + g + "," + b + ")");
           d.setAttribute("metal",metal);
           d.setAttribute("medium",medium);
           d.setAttribute("l_index",l_index);
           d.setAttribute("r_index",r_index);
+
         })
     }
     // listen the selected item and store the color, value in class
