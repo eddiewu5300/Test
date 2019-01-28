@@ -1,13 +1,13 @@
 //color mapping interaction
-var top_ctl = document.querySelector(".top-ctl");
-var bottom_ctl = document.querySelector(".bottom-ctl");
-var input = document.querySelector("#number1");
-var input2 = document.querySelector("#number2");
-var input3 = document.getElementById("metal1");
-var input4 = document.getElementById("metal2");
-var input5 = document.querySelector("#medium1");
-var input6 = document.querySelector("#medium2");
-var cylinder = document.querySelector("#cylinder");
+const top_ctl = document.querySelector(".top-ctl");
+const bottom_ctl = document.querySelector(".bottom-ctl");
+const input = document.querySelector("#number1");
+const input2 = document.querySelector("#number2");
+const input3 = document.getElementById("metal1");
+const input4 = document.getElementById("metal2");
+const input5 = document.querySelector("#medium1");
+const input6 = document.querySelector("#medium2");
+const cylinder = document.querySelector("#cylinder");
 
 var r = 0;
 var g = 0;
@@ -17,8 +17,12 @@ var r_index = 1;
 var metal = "Au";
 var medium = "glass";
 var svg = null;
-var num_rows = null;
-var num_columns = null;
+var num_rows = 24;
+var num_columns = 51;
+var first_radius_value = color_map[metal + "_" + medium].R[1][0];
+var first_length_value = color_map[metal + "_" + medium].R[0][1];
+var last_radius_value = color_map[metal + "_" + medium].R[1][0];
+var last_length_value = color_map[metal + "_" + medium].R[0][1];
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG()  {
@@ -94,11 +98,8 @@ async function loadSVG()  {
         input.value = l_index;
         input2.value = r_index;
 
-        const first_radius_value = color_map[metal + "_" + medium].R[1][0];
-        // console.log("rad int",first_radius_value)
-        const first_length_value = color_map[metal + "_" + medium].R[0][1];
         // console.log("length int",first_length_value)
-        const radius_value = color_map[metal + "_" + medium].R[r_index][0];
+        radius_value = color_map[metal + "_" + medium].R[r_index][0];
         const length_value = color_map[metal + "_" + medium].R[0][l_index];
         console.log("rad val",radius_value)
         const par_height = length_value
@@ -121,7 +122,7 @@ async function loadSVG()  {
     // checking if the radius of L/R >2
     var radius_value = color_map[metal + "_" + medium].R[r_index][0];
     var length_value = color_map[metal + "_" + medium].R[0][l_index];
-    const first_radius_value = color_map[metal + "_" + medium].R[1][0];
+    first_radius_value = color_map[metal + "_" + medium].R[1][0];
     if (length_value / radius_value < 2) {
         console.log("ratio of L/R < 2!!!")
         r_index = Math.floor((length_value / 2 - first_radius_value) / 2) + 1
@@ -169,7 +170,7 @@ async function loadSVG()  {
     // checking if the ratio of L/R >2
     var radius_value = color_map[metal + "_" + medium].R[r_index][0];
     var length_value = color_map[metal + "_" + medium].R[0][l_index];
-    var first_length_value = color_map[metal + "_" + medium].R[0][1];
+    first_length_value = color_map[metal + "_" + medium].R[0][1];
     if (length_value / radius_value < 2) {
         console.log("ratio of L/R < 2!!!")
         l_index = (radius_value * 2 - first_length_value) / 2 + 1
