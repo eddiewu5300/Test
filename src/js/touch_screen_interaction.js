@@ -6,7 +6,7 @@ first_length_value = color_map[metal + "_" + medium].R[0][1];
 last_radius_value = color_map[metal + "_" + medium].R[num_rows][0];
 last_length_value = color_map[metal + "_" + medium].R[0][num_columns];
 
-var hammertime = new Hammer(touchbox);
+const hammertime = new Hammer(touchbox);
 
 // hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 // hammertime.on('panend', function (evt) {
