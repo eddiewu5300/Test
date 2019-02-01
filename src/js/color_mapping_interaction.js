@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable radix */
@@ -30,8 +31,8 @@ let num_rows = 24;
 let num_columns = 51;
 let first_radius_value = color_map[`${metal}_${medium}`].R[1][0];
 let first_length_value = color_map[`${metal}_${medium}`].R[0][1];
-const last_radius_value = color_map[`${metal}_${medium}`].R[1][0];
-const last_length_value = color_map[`${metal}_${medium}`].R[0][1];
+let last_radius_value = color_map[`${metal}_${medium}`].R[1][0];
+let last_length_value = color_map[`${metal}_${medium}`].R[0][1];
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG() {
