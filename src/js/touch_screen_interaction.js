@@ -1,50 +1,49 @@
-/* eslint-disable radix */
-/* eslint-disable no-undef */
-/* eslint-disable camelcase */
 /* eslint-disable prefer-destructuring */
+/* eslint-disable no-console */
+
 
 
 const touchbox = document.querySelector('a-scene');
-first_radius_value = color_map[`${metal}_${medium}`].R[1][0];
-first_length_value = color_map[`${metal}_${medium}`].R[0][1];
-last_radius_value = color_map[`${metal}_${medium}`].R[num_rows][0];
-last_length_value = color_map[`${metal}_${medium}`].R[0][num_columns];
+firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+lastRadiusValue = colorMap[`${metal}_${medium}`].R[numRows][0];
+lastLengthValue = colorMap[`${metal}_${medium}`].R[0][numColumns];
 
 const hammertime = new Hammer(touchbox);
 
 hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-hammertime.on('panend', (evt) => {
+hammertime.on('pan', (evt) => {
   console.log('end', evt);
   console.log('X', evt.deltaX);
   console.log('Y', evt.deltaY);
 
 
-  let par_height = cylinder.getAttribute('height');
-  let par_radius = cylinder.getAttribute('radius');
-  // console.log(Math.floor(evt.deltaX) + parseInt(par_height))
-  par_height = (Math.floor(evt.deltaX * 0.5) + parseInt(par_height));
-  par_radius = Math.floor(evt.deltaY * 0.5) + parseInt(par_radius);
-  // console.log("height,radius",par_height,par_radius)
-  if (par_height > last_length_value) {
+  let parHeight = cylinder.getAttribute('height');
+  let parRadius = cylinder.getAttribute('radius');
+  // console.log(Math.floor(evt.deltaX) + parseInt(parHeight))
+  parHeight = (Math.floor(evt.deltaX * 0.05) + parseInt(parHeight, 10));
+  parRadius = Math.floor(evt.deltaY * (-0.05)) + parseInt(parRadius, 10);
+  // console.log("height,radius",parHeight,parRadius)
+  if (parHeight > lastLengthValue) {
     console.log('!');
-    par_height = last_length_value;
+    parHeight = lastLengthValue;
   }
-  if (par_height < first_length_value) {
+  if (parHeight < firstLengthValue) {
     console.log('!');
-    par_height = first_length_value;
+    parHeight = firstLengthValue;
   }
-  if (par_radius > last_radius_value) {
+  if (parRadius > lastRadiusValue) {
     console.log('!');
-    par_radius = last_radius_value;
+    parRadius = lastRadiusValue;
   }
-  if (par_radius < first_radius_value) {
+  if (parRadius < firstRadiusValue) {
     console.log('!');
-    par_radius = first_radius_value;
+    parRadius = firstRadiusValue;
   }
-  console.log('abc', par_height);
-  console.log('cdf', par_radius);
-  cylinder.setAttribute('height', par_height);
-  cylinder.setAttribute('radius', par_radius);
+  console.log('abc', parHeight);
+  console.log('cdf', parRadius);
+  cylinder.setAttribute('height', parHeight);
+  cylinder.setAttribute('radius', parRadius);
 });
 
 
@@ -70,12 +69,12 @@ hammertime.on('panend', (evt) => {
 // });
 
 
-//   var par_height = cylinder.getAttribute("height")
-//   var par_radius = cylinder.getAttribute("radius")
-//   console.log(Math.floor(evt.deltaX) + parseInt(par_height))
-//   par_height = (Math.floor(evt.deltaX) + parseInt(par_height));
-//   par_radius = Math.floor(evt.deltaY) + parseInt(par_radius);
-//   // console.log("height,radius",par_height,par_radius)
-//   cylinder.setAttribute("height",par_height);
-//   cylinder.setAttribute("radius", par_radius);
+//   var parHeight = cylinder.getAttribute("height")
+//   var parRadius = cylinder.getAttribute("radius")
+//   console.log(Math.floor(evt.deltaX) + parseInt(parHeight))
+//   parHeight = (Math.floor(evt.deltaX) + parseInt(parHeight));
+//   parRadius = Math.floor(evt.deltaY) + parseInt(parRadius);
+//   // console.log("height,radius",parHeight,parRadius)
+//   cylinder.setAttribute("height",parHeight);
+//   cylinder.setAttribute("radius", parRadius);
 // });

@@ -4,13 +4,13 @@
 /* eslint-disable radix */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
-/* eslint-disable camelcase */
+
 /* eslint-disable no-unused-vars */
 // color mapping interaction
 // eslint-disable-next-line camelcase
-const top_ctl = document.querySelector('.top-ctl');
+const topCtl = document.querySelector('.top-ctl');
 // eslint-disable-next-line camelcase
-const bottom_ctl = document.querySelector('.bottom-ctl');
+const bottomCtl = document.querySelector('.bottom-ctl');
 const input = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
 const input3 = document.getElementById('metal1');
@@ -22,17 +22,17 @@ const cylinder = document.querySelector('#cylinder');
 let r = 0;
 let g = 0;
 let b = 0;
-let l_index = 1;
-let r_index = 1;
+let lenIndex = 1;
+let radIndex = 1;
 let metal = 'Au';
 let medium = 'glass';
 let svg = null;
-let num_rows = 24;
-let num_columns = 51;
-let first_radius_value = color_map[`${metal}_${medium}`].R[1][0];
-let first_length_value = color_map[`${metal}_${medium}`].R[0][1];
-let last_radius_value = color_map[`${metal}_${medium}`].R[1][0];
-let last_length_value = color_map[`${metal}_${medium}`].R[0][1];
+let numRows = 24;
+let numColumns = 51;
+let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG() {
@@ -49,8 +49,8 @@ async function loadSVG() {
       d.setAttribute('data-color', `rgb(${r},${g},${b})`);
       d.setAttribute('metal', metal);
       d.setAttribute('medium', medium);
-      d.setAttribute('l_index', l_index);
-      d.setAttribute('r_index', r_index);
+      d.setAttribute('lenIndex', lenIndex);
+      d.setAttribute('radIndex', radIndex);
     });
   }
   // listen the selected item and store the color, value in class
@@ -68,18 +68,18 @@ async function loadSVG() {
       evt.target.classList.add('selected');
       cylinder.setAttribute('color', targetColor);
 
-      rgb_value = targetColor
+      rgbValue = targetColor
         .substring(0, targetColor.length - 1)
         .substring(4)
         .split(',')
         .map(d => Number(d));
-      // console.log(rgb_value)
-      r = rgb_value[0];
-      g = rgb_value[1];
-      b = rgb_value[2];
+      // console.log(rgbValue)
+      r = rgbValue[0];
+      g = rgbValue[1];
+      b = rgbValue[2];
 
-      l_index = parseInt(evt.target.getAttribute('l_index'));
-      r_index = parseInt(evt.target.getAttribute('r_index'));
+      lenIndex = parseInt(evt.target.getAttribute('lenIndex'));
+      radIndex = parseInt(evt.target.getAttribute('radIndex'));
 
       metal = evt.target.getAttribute('metal');
       // console.log(metal)
@@ -99,24 +99,24 @@ async function loadSVG() {
         document.querySelector('#medium2').checked = true;
       }
 
-      num_rows = color_map[`${metal}_${medium}`].R.length - 1;
-      num_columns = color_map[`${metal}_${medium}`].R[0].length - 1;
+      numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+      numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
 
-      input.max = num_columns;
-      input2.max = num_rows;
-      input.value = l_index;
-      input2.value = r_index;
+      input.max = numColumns;
+      input2.max = numRows;
+      input.value = lenIndex;
+      input2.value = radIndex;
 
-      // console.log('length int',first_length_value)
-      radius_value = color_map[`${metal}_${medium}`].R[r_index][0];
-      const length_value = color_map[`${metal}_${medium}`].R[0][l_index];
-      console.log('rad val', radius_value);
-      const par_height = length_value;
-      const par_radius = radius_value;
+      // console.log('length int',firstLengthValue)
+      radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+      const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
+      console.log('rad val', radiusValue);
+      const parHeight = lengthValue;
+      const parRadius = radiusValue;
 
-      console.log('height radius', par_height, par_radius);
-      cylinder.setAttribute('height', par_height);
-      cylinder.setAttribute('radius', par_radius);
+      console.log('height radius', parHeight, parRadius);
+      cylinder.setAttribute('height', parHeight);
+      cylinder.setAttribute('radius', parRadius);
       // evt.target.setAttribute('data-color', newColor);
       // evt.target.style.fill = newColor;
     }
@@ -126,46 +126,46 @@ async function loadSVG() {
     // console.log(event);
     console.log(event.target.value);
 
-    l_index = parseInt(event.target.value);
+    lenIndex = parseInt(event.target.value);
     // checking if the radius of L/R >2
-    let radius_value = color_map[`${metal}_${medium}`].R[r_index][0];
-    const length_value = color_map[`${metal}_${medium}`].R[0][l_index];
-    first_radius_value = color_map[`${metal}_${medium}`].R[1][0];
-    if (length_value / radius_value < 2) {
+    let radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+    const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
+    firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+    if (lengthValue / radiusValue < 2) {
       console.log('ratio of L/R < 2!!!');
-      r_index = Math.floor((length_value / 2 - first_radius_value) / 2) + 1;
-      input2.value = r_index;
-      radius_value = color_map[`${metal}_${medium}`].R[r_index][0];
+      radIndex = Math.floor((lengthValue / 2 - firstRadiusValue) / 2) + 1;
+      input2.value = radIndex;
+      radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
     }
-    const par_height = length_value;
-    const par_radius = radius_value;
+    const parHeight = lengthValue;
+    const parRadius = radiusValue;
 
-    console.log('height radius', par_height, par_radius);
-    cylinder.setAttribute('height', par_height);
-    // cylinder.setAttribute('radius',par_radius)
+    console.log('height radius', parHeight, parRadius);
+    cylinder.setAttribute('height', parHeight);
+    // cylinder.setAttribute('radius',parRadius)
 
 
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
-    // bottom_ctl.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
+    // bottomCtl.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
     const newColor = `rgb(${r},${g},${b})`;
     cylinder.setAttribute('color', newColor);
     // get the selected item
 
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    // console.log(selected_target);
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    // console.log(selectedTarget);
 
     // set color for 3D particle
 
     // set color for svg
-    if (selected_target) {
-      selected_target.style.fill = newColor;
+    if (selectedTarget) {
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
       // store the current length and radius index
-      selected_target.setAttribute('l_index', l_index);
-      selected_target.setAttribute('r_index', r_index);
+      selectedTarget.setAttribute('lenIndex', lenIndex);
+      selectedTarget.setAttribute('radIndex', radIndex);
     }
   });
 
@@ -173,41 +173,41 @@ async function loadSVG() {
     // console.log(event);
     // console.log('input2,', event.target.value);
 
-    r_index = parseInt(event.target.value);
+    radIndex = parseInt(event.target.value);
 
     // checking if the ratio of L/R >2
-    const radius_value = color_map[`${metal}_${medium}`].R[r_index][0];
-    let length_value = color_map[`${metal}_${medium}`].R[0][l_index];
-    first_length_value = color_map[`${metal}_${medium}`].R[0][1];
-    if (length_value / radius_value < 2) {
+    const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+    let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
+    firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+    if (lengthValue / radiusValue < 2) {
       console.log('ratio of L/R < 2!!!');
-      l_index = (radius_value * 2 - first_length_value) / 2 + 1;
-      input.value = l_index;
-      length_value = color_map[`${metal}_${medium}`].R[0][l_index];
+      lenIndex = (radiusValue * 2 - firstLengthValue) / 2 + 1;
+      input.value = lenIndex;
+      lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     }
 
-    const par_height = length_value;
-    const par_radius = radius_value;
-    console.log('height radius', par_height, par_radius);
-    // cylinder.setAttribute('height',par_height)
-    cylinder.setAttribute('radius', par_radius);
+    const parHeight = lengthValue;
+    const parRadius = radiusValue;
+    console.log('height radius', parHeight, parRadius);
+    // cylinder.setAttribute('height',parHeight)
+    cylinder.setAttribute('radius', parRadius);
 
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
     cylinder.setAttribute('color', newColor);
 
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    if (selected_target) {
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    if (selectedTarget) {
     // set color for svg
-      selected_target.style.fill = newColor;
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
       // store the current length and radius index
-      selected_target.setAttribute('l_index', l_index);
-      selected_target.setAttribute('r_index', r_index);
+      selectedTarget.setAttribute('lenIndex', lenIndex);
+      selectedTarget.setAttribute('radIndex', radIndex);
     }
   });
 
@@ -216,21 +216,21 @@ async function loadSVG() {
     if (event.target.checked) {
       metal = event.target.value;
     }
-    num_rows = color_map[`${metal}_${medium}`].R.length - 1;
-    num_columns = color_map[`${metal}_${medium}`].R[0].length - 1;
+    numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+    numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
 
-    input.max = num_columns;
-    input2.max = num_rows;
-    if (r_index > input2.max) {
-      r_index = input2.max;
+    input.max = numColumns;
+    input2.max = numRows;
+    if (radIndex > input2.max) {
+      radIndex = input2.max;
     }
-    if (l_index > input.max) {
-      l_index = input.max;
+    if (lenIndex > input.max) {
+      lenIndex = input.max;
     }
 
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
 
 
     const newColor = `rgb(${r},${g},${b})`;
@@ -239,17 +239,17 @@ async function loadSVG() {
     cylinder.setAttribute('color', newColor);
 
     // get the selected item
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    if (selected_target) {
-    // console.log(selected_target);
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    if (selectedTarget) {
+    // console.log(selectedTarget);
       svg.querySelector('.selected').setAttribute('metal', metal);
       const newColor = `rgb(${r},${g},${b})`;
       // set color for 3D particle
       cylinder.setAttribute('color', newColor);
       // set color for svg
-      selected_target.style.fill = newColor;
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
     }
   });
 
@@ -259,34 +259,34 @@ async function loadSVG() {
     if (event.target.checked) {
       metal = event.target.value;
     }
-    num_rows = color_map[`${metal}_${medium}`].R.length - 1;
-    num_columns = color_map[`${metal}_${medium}`].R[0].length - 1;
-    input.max = num_columns;
+    numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+    numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
+    input.max = numColumns;
 
-    input2.max = num_rows;
+    input2.max = numRows;
 
-    if (r_index > input2.max) {
-      r_index = input2.max;
+    if (radIndex > input2.max) {
+      radIndex = input2.max;
     }
-    if (l_index > input.max) {
-      l_index = input.max;
+    if (lenIndex > input.max) {
+      lenIndex = input.max;
     }
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
 
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
     cylinder.setAttribute('color', newColor);
     // get the selected item
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    if (selected_target) {
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('metal', metal);
-      // console.log(selected_target);
+      // console.log(selectedTarget);
       // set color for svg
-      selected_target.style.fill = newColor;
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
     }
   });
 
@@ -296,34 +296,34 @@ async function loadSVG() {
     if (event.target.checked) {
       medium = event.target.value;
     }
-    num_rows = color_map[`${metal}_${medium}`].R.length - 1;
-    num_columns = color_map[`${metal}_${medium}`].R[0].length - 1;
+    numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+    numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
 
-    input.max = num_columns;
-    input2.max = num_rows;
-    if (r_index > input2.max) {
-      r_index = input2.max;
+    input.max = numColumns;
+    input2.max = numRows;
+    if (radIndex > input2.max) {
+      radIndex = input2.max;
     }
-    if (l_index > input.max) {
-      l_index = input.max;
+    if (lenIndex > input.max) {
+      lenIndex = input.max;
     }
 
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
 
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
     cylinder.setAttribute('color', newColor);
     // get the selected item
 
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    if (selected_target) {
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('medium', medium);
       // set color for svg
-      selected_target.style.fill = newColor;
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
     }
   });
 
@@ -332,33 +332,33 @@ async function loadSVG() {
     if (event.target.checked) {
       medium = event.target.value;
     }
-    num_rows = color_map[`${metal}_${medium}`].R.length - 1;
-    num_columns = color_map[`${metal}_${medium}`].R[0].length - 1;
+    numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+    numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
 
-    input.max = num_columns;
-    input2.max = num_rows;
-    if (r_index > input2.max) {
-      r_index = input2.max;
+    input.max = numColumns;
+    input2.max = numRows;
+    if (radIndex > input2.max) {
+      radIndex = input2.max;
     }
-    if (l_index > input.max) {
-      l_index = input.max;
+    if (lenIndex > input.max) {
+      lenIndex = input.max;
     }
 
-    r = color_map[`${metal}_${medium}`].R[r_index][l_index];
-    g = color_map[`${metal}_${medium}`].G[r_index][l_index];
-    b = color_map[`${metal}_${medium}`].B[r_index][l_index];
+    r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
+    g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
+    b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
     cylinder.setAttribute('color', newColor);
 
     // get the selected item
-    const selected_target = document.querySelectorAll('.color-selector.selected')[0];
-    if (selected_target) {
+    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('medium', medium);
       // set color for svg
-      selected_target.style.fill = newColor;
+      selectedTarget.style.fill = newColor;
       // store the current color
-      selected_target.setAttribute('data-color', newColor);
+      selectedTarget.setAttribute('data-color', newColor);
     }
   });
 }
