@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
+/* eslint-disable prefer-destructuring */
 
 
-const touchbox = document.querySelector("a-scene");
-first_radius_value = color_map[metal + "_" + medium].R[1][0];
-first_length_value = color_map[metal + "_" + medium].R[0][1];
-last_radius_value = color_map[metal + "_" + medium].R[num_rows][0];
-last_length_value = color_map[metal + "_" + medium].R[0][num_columns];
+const touchbox = document.querySelector('a-scene');
+first_radius_value = color_map[`${metal}_${medium}`].R[1][0];
+first_length_value = color_map[`${metal}_${medium}`].R[0][1];
+last_radius_value = color_map[`${metal}_${medium}`].R[num_rows][0];
+last_length_value = color_map[`${metal}_${medium}`].R[0][num_columns];
 
 const hammertime = new Hammer(touchbox);
 
@@ -45,12 +48,10 @@ const hammertime = new Hammer(touchbox);
 
 
 hammertime.get('pinch').set({ enable: true });
-hammertime.on('pinch', function(evt) {
-
-  console.log("start",evt)
-  console.log("X",evt.deltaX);
-  console.log("Y",evt.deltaY);
-
+hammertime.on('pinch', (evt) => {
+  console.log('start', evt);
+  console.log('X', evt.deltaX);
+  console.log('Y', evt.deltaY);
 });
 
 
@@ -77,4 +78,3 @@ hammertime.on('pinch', function(evt) {
 //   cylinder.setAttribute("height",par_height);
 //   cylinder.setAttribute("radius", par_radius);
 // });
-
