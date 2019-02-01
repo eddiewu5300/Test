@@ -33,6 +33,7 @@ let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
 let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
 let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
 let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+let selectedTarget = null;
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG() {
@@ -66,7 +67,8 @@ async function loadSVG() {
       });
       // set up the selected item's attribute at css
       evt.target.classList.add('selected');
-      cylinder.setAttribute('color', targetColor);
+      selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+      // cylinder.setAttribute('color', targetColor);
 
       rgbValue = targetColor
         .substring(0, targetColor.length - 1)
@@ -150,10 +152,10 @@ async function loadSVG() {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     // bottomCtl.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
     const newColor = `rgb(${r},${g},${b})`;
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
     // get the selected item
 
-    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     // console.log(selectedTarget);
 
     // set color for 3D particle
@@ -197,9 +199,9 @@ async function loadSVG() {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
 
-    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
     // set color for svg
       selectedTarget.style.fill = newColor;
@@ -236,7 +238,8 @@ async function loadSVG() {
     const newColor = `rgb(${r},${g},${b})`;
 
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
+    cylinder.setAttribute('color', 'gold');
 
     // get the selected item
     const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
@@ -277,7 +280,8 @@ async function loadSVG() {
 
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
+    cylinder.setAttribute('color', 'silver');
     // get the selected item
     const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
@@ -317,7 +321,7 @@ async function loadSVG() {
     cylinder.setAttribute('color', newColor);
     // get the selected item
 
-    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('medium', medium);
       // set color for svg
@@ -352,7 +356,7 @@ async function loadSVG() {
     cylinder.setAttribute('color', newColor);
 
     // get the selected item
-    const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
+    selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('medium', medium);
       // set color for svg
