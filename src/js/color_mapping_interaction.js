@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable prefer-const */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
@@ -42,7 +43,12 @@ async function loadSVG() {
   // console.log(text, 'texttexttext');
   document.querySelector('.content').insertAdjacentHTML('afterBegin', text);
   svg = document.querySelector('svg');
-
+  if (svg) {
+    svg.querySelectorAll('polygon').forEach((d) => {
+      // console.log(d);
+      d.classList.add('color-selector');
+    });
+  }
   // add attribute to svg
   if (svg) {
     svg.querySelectorAll('.color-selector').forEach((d) => {
@@ -57,6 +63,7 @@ async function loadSVG() {
   // listen the selected item and store the color, value in class
   svg.addEventListener('click', (evt) => {
     // console.log(evt.target);
+    console.log("selected");
     const targetColor = evt.target.getAttribute('data-color');
 
     if (targetColor) {
