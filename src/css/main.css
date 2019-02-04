@@ -237,6 +237,7 @@ header {
 
 .content {
   flex: 2;
+  padding-block-end: 5px;
   border-left: 2px solid black;
   background: #ECECEC
 

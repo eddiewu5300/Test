@@ -37,7 +37,7 @@ let selectedTarget = null;
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG() {
-  const response = await fetch('sample_svg/new.svg');
+  const response = await fetch('stain_glass_files/BUTTERFLY.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('.content').insertAdjacentHTML('afterBegin', text);
