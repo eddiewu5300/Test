@@ -10,7 +10,6 @@
 // color mapping interaction
 // eslint-disable-next-line camelcase
 const topCtl = document.querySelector('.top-ctl');
-// eslint-disable-next-line camelcase
 const bottomCtl = document.querySelector('.bottom-ctl');
 const input = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
@@ -20,29 +19,32 @@ const input5 = document.querySelector('#medium1');
 const input6 = document.querySelector('#medium2');
 const cylinder = document.querySelector('#cylinder');
 
-let r = 0;
-let g = 0;
-let b = 0;
+
 let lenIndex = 1;
 let radIndex = 1;
 let metal = 'Au';
 let medium = 'glass';
-let svg = null;
-let numRows = 24;
-let numColumns = 51;
-let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
-let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
-let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
 let selectedTarget = null;
 
 // get the exteranl svg file and parse it into DOM
 async function loadSVG() {
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  let svg = null;
+  let numRows = 24;
+  let numColumns = 51;
+  let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+  let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+  // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
+  // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   const response = await fetch('stain_glass_files/BUTTERFLY.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('.content').insertAdjacentHTML('afterBegin', text);
   svg = document.querySelector('svg');
+  svg.setAttribute("height", "90%");
+  svg.setAttribute("width", "90%");
   if (svg) {
     svg.querySelectorAll('polygon').forEach((d) => {
       // console.log(d);
@@ -210,7 +212,7 @@ async function loadSVG() {
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
-    // set color for svg
+      // set color for svg
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
@@ -251,7 +253,7 @@ async function loadSVG() {
     // get the selected item
     const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
-    // console.log(selectedTarget);
+      // console.log(selectedTarget);
       svg.querySelector('.selected').setAttribute('metal', metal);
       const newColor = `rgb(${r},${g},${b})`;
       // set color for 3D particle
