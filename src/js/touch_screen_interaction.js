@@ -68,7 +68,7 @@ function touchInteraction() {
     let rightDelta;
     let upDelta;
     let downDelta;
-    console.log('Y1', Y1location)
+    // console.log('Y1', Y1location)
     if (X1startFromRight) {
       leftDelta = X2location - leftStart;
       rightDelta = X1location - rightStart;
@@ -83,8 +83,8 @@ function touchInteraction() {
     if (Y1startFromUP) {
       upDelta = Y2location - upStart;
       downDelta = Y1location - downStart;
-      console.log('up delta', upDelta)
-      console.log('down delta', downDelta)
+      // console.log('up delta', upDelta)
+      // console.log('down delta', downDelta)
     } else {
       upDelta = Y1location - upStart;
       downDelta = Y2location - downStart;
@@ -95,8 +95,26 @@ function touchInteraction() {
     const numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
     const firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
     const firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-    lenIndex = (Math.floor(totalDeltaX * 0.02 + parseInt(lenIndex, 10)));
-    radIndex = (Math.floor(totalDeltaY * (0.01) + parseInt(radIndex, 10)));
+
+    if ((totalDeltaX % 2) > 0) {
+      // console.log((totalDeltaX % 2))
+      lenIndex += 1;
+    }
+    if ((totalDeltaX % 2) < 0) {
+      // console.log((totalDeltaX % 2))
+      lenIndex -= 1;
+    }
+    if ((totalDeltaY % 2) > 0) {
+      // console.log((totalDeltaX % 2))
+      radIndex += 1;
+    }
+    if ((totalDeltaY % 2) < 0) {
+      // console.log((totalDeltaX % 2))
+      radIndex -= 1;
+    }
+    // lenIndex = (Math.floor(totalDeltaX * 0.02 + parseInt(lenIndex, 10)));
+    // radIndex = (Math.floor(totalDeltaY * (0.01) + parseInt(radIndex, 10)));
+
     // console.log("rad",radIndex);
 
     if (lenIndex > numColumns) {
