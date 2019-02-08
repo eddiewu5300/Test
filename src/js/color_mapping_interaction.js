@@ -38,7 +38,7 @@ async function loadSVG() {
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-  const response = await fetch('stain_glass_files/FISH.svg');
+  const response = await fetch('stain_glass_files/BUTTERFLY.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
@@ -257,7 +257,7 @@ async function loadSVG() {
       svg.querySelector('.selected').setAttribute('metal', metal);
       const newColor = `rgb(${r},${g},${b})`;
       // set color for 3D particle
-      cylinder.setAttribute('color', newColor);
+      // cylinder.setAttribute('color', newColor);
       // set color for svg
       selectedTarget.style.fill = newColor;
       // store the current color
@@ -327,7 +327,7 @@ async function loadSVG() {
 
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
     // get the selected item
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
@@ -362,7 +362,7 @@ async function loadSVG() {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
 
     // get the selected item
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
