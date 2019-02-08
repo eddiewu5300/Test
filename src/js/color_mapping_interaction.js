@@ -41,10 +41,10 @@ async function loadSVG() {
   const response = await fetch('stain_glass_files/BUTTERFLY.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
-  document.querySelector('.content').insertAdjacentHTML('afterBegin', text);
+  document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
   svg = document.querySelector('svg');
-  svg.setAttribute("height", "90%");
-  svg.setAttribute("width", "90%");
+  svg.setAttribute("height", "100%");
+  svg.setAttribute("width", "100%");
   if (svg) {
     svg.querySelectorAll('polygon').forEach((d) => {
       // console.log(d);
