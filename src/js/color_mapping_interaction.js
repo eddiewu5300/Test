@@ -38,7 +38,7 @@ async function loadSVG() {
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-  const response = await fetch('stain_glass_files/BUTTERFLY.svg');
+  const response = await fetch('stain_glass_files/FISH.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
@@ -46,7 +46,7 @@ async function loadSVG() {
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
   if (svg) {
-    svg.querySelectorAll('polygon, path').forEach((d) => {
+    svg.querySelectorAll('polygon, path, rect').forEach((d) => {
       // console.log(d);
       d.classList.add('color-selector');
     });
@@ -264,42 +264,40 @@ async function loadSVG() {
       selectedTarget.setAttribute('data-color', newColor);
     }
 
-    var yourVlSpec = {
+    let yourVlSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v2.0.json',
       description: 'A simple bar chart with embedded data.',
       data: {
-        values: []
+        values: [],
       },
       encoding: {
-        x: {field: 'length', type: 'ordinal', scale: { rangeStep: null }},
-        y: {field: 'radius', type: 'ordinal', scale: { rangeStep: null }},
+        x: { field: 'length', type: 'ordinal', scale: { rangeStep: null } },
+        y: { field: 'radius', type: 'ordinal', scale: { rangeStep: null } },
       },
       layer: [{
         mark: 'rect',
         encoding: {
           color: {
             field: 'color',
-            scale: null
-          }
-        }
+            scale: null,
+          },
+        },
       }, {
         mark: 'circle',
         encoding: {
           color: {
             condition: {
               test: 'datum.selected',
-              value: 'cyan'
+              value: 'cyan',
             },
-            value: 'rgba(0, 0, 0, 0)'
-          }
-        }
-      }]
+            value: 'rgba(0, 0, 0, 0)',
+          },
+        },
+      }],
     };
 
     for (let r = 1; r <= numRows; r++) {
-
       for (let l = 1; l <= numColumns; l++) {
-
         const radius = colorMap[`${metal}_${medium}`].R[r][0];
         const length = colorMap[`${metal}_${medium}`].R[0][l];
 
@@ -311,10 +309,10 @@ async function loadSVG() {
         if (r === radIndex && l === lenIndex) selected = true;
 
         yourVlSpec.data.values.push({
-          length: length,
-          radius: radius,
+          length,
+          radius,
           color: `rgb(${red},${green},${blue})`,
-          selected: selected
+          selected,
         });
       }
     }
@@ -322,16 +320,7 @@ async function loadSVG() {
     console.log(yourVlSpec.data.values);
 
 
-
-
-
-    vegaEmbed('.bottom-ctl', yourVlSpec, {"actions": false});
-
-
-
-
-
-
+    vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
   });
 
   input4.addEventListener('change', (event) => {
@@ -371,6 +360,7 @@ async function loadSVG() {
       selectedTarget.setAttribute('data-color', newColor);
     }
   });
+
 
   input5.addEventListener('change', (event) => {
     console.log(`${metal}_${medium}`);
