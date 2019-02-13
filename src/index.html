@@ -91,7 +91,7 @@
         </div>
         <div class="bottom-ctl"></div>
       </div>
-      <div class="content" >
+      <div class="content">
         <div id="my-stain-glass"></div>
 
       </div>
@@ -145,33 +145,42 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
 
     <script type="text/javascript">
-      var yourVlSpec = {
+      let yourVlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v2.0.json',
         description: 'A simple bar chart with embedded data.',
         data: {
-          values: [
-            {a: 'A', b: 28, color: '#00ff00'},
-            {a: 'B', b: 55, color: 'rgb(0, 0, 255)'},
-            {a: 'C', b: 43, color: 'red'},
-            {a: 'D', b: 91, color: 'red'},
-            {a: 'E', b: 81, color: 'red'},
-            {a: 'F', b: 53, color: 'red'},
-            {a: 'G', b: 19, color: 'red'},
-            {a: 'H', b: 87, color: 'red'},
-            {a: 'I', b: 52, color: 'red'}
-          ]
+          values: [],
         },
-        mark: 'rect',
         encoding: {
-          x: {field: 'a', type: 'ordinal'},
-          y: {field: 'b', type: 'nominal'},
-          color: {
-            field: 'color',
-            scale: null
-          }
-        }
+          x: { field: 'length', type: 'ordinal', scale: { rangeStep: null } },
+          y: { field: 'radius', type: 'ordinal', scale: { rangeStep: null } },
+        },
+        layer: [{
+          mark: 'rect',
+          encoding: {
+            color: {
+              field: 'color',
+              scale: null,
+            },
+          },
+        }, {
+          mark: 'circle',
+          encoding: {
+            color: {
+              condition: {
+                test: 'datum.selected',
+                value: 'cyan',
+              },
+              value: 'rgba(0, 0, 0, 0)',
+            },
+          },
+        }],
       };
-      vegaEmbed('.bottom-ctl', yourVlSpec, {"actions": false});
+
+
+
+      // console.log(yourVlSpec.data.values)
+      vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
     </script>
 </body>
 

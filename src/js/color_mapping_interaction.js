@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable quotes */
 /* eslint-disable prefer-const */
 /* eslint-disable no-shadow */
@@ -264,37 +265,7 @@ async function loadSVG() {
       selectedTarget.setAttribute('data-color', newColor);
     }
 
-    let yourVlSpec = {
-      $schema: 'https://vega.github.io/schema/vega-lite/v2.0.json',
-      description: 'A simple bar chart with embedded data.',
-      data: {
-        values: [],
-      },
-      encoding: {
-        x: { field: 'length', type: 'ordinal', scale: { rangeStep: null } },
-        y: { field: 'radius', type: 'ordinal', scale: { rangeStep: null } },
-      },
-      layer: [{
-        mark: 'rect',
-        encoding: {
-          color: {
-            field: 'color',
-            scale: null,
-          },
-        },
-      }, {
-        mark: 'circle',
-        encoding: {
-          color: {
-            condition: {
-              test: 'datum.selected',
-              value: 'cyan',
-            },
-            value: 'rgba(0, 0, 0, 0)',
-          },
-        },
-      }],
-    };
+
 
     for (let r = 1; r <= numRows; r++) {
       for (let l = 1; l <= numColumns; l++) {
