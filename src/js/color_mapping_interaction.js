@@ -38,7 +38,7 @@ async function loadSVG() {
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-  const response = await fetch('stain_glass_files/BUTTERFLY.svg');
+  const response = await fetch('stain_glass_files/CACTUS.svg');
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
@@ -46,7 +46,7 @@ async function loadSVG() {
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
   if (svg) {
-    svg.querySelectorAll('polygon, path').forEach((d) => {
+    svg.querySelectorAll('polygon, path, rect, g').forEach((d) => {
       // console.log(d);
       d.classList.add('color-selector');
     });
