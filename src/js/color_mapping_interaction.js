@@ -121,7 +121,7 @@ async function loadSVG() {
       input2.value = radIndex;
 
       // console.log('length int',firstLengthValue)
-      radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+      const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
       const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
       console.log('rad val', radiusValue);
       const parHeight = lengthValue;
@@ -155,6 +155,7 @@ async function loadSVG() {
 
     console.log('height radius', parHeight, parRadius);
     cylinder.setAttribute('height', parHeight);
+    cylinder.setAttribute('radius', parRadius);
     // cylinder.setAttribute('radius',parRadius)
 
 
@@ -203,6 +204,7 @@ async function loadSVG() {
     const parRadius = radiusValue;
     console.log('height radius', parHeight, parRadius);
     // cylinder.setAttribute('height',parHeight)
+    cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
 
     r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
