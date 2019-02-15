@@ -6,11 +6,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-// console */
-lenIndex = lenIndex;
-radIndex = radIndex;
-metal = metal;
-medium = medium;
-selectedTarget = selectedTarget;
+
 
 function touchInteraction() {
   const touchbox = document.querySelector('a-scene');

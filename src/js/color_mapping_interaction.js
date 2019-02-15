@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable quotes */
 /* eslint-disable prefer-const */
 /* eslint-disable no-shadow */
@@ -11,6 +12,7 @@
 // eslint-disable-next-line camelcase
 const topCtl = document.querySelector('.top-ctl');
 const bottomCtl = document.querySelector('.bottom-ctl');
+const colorSpectrum = document.querySelector('.color-spectrum')
 const input = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
 const input3 = document.getElementById('metal1');
@@ -46,7 +48,7 @@ async function loadSVG() {
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
   if (svg) {
-    svg.querySelectorAll('polygon, path').forEach((d) => {
+    svg.querySelectorAll('polygon, path, rect, g').forEach((d) => {
       // console.log(d);
       d.classList.add('color-selector');
     });
@@ -119,7 +121,7 @@ async function loadSVG() {
       input2.value = radIndex;
 
       // console.log('length int',firstLengthValue)
-      radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+      const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
       const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
       console.log('rad val', radiusValue);
       const parHeight = lengthValue;
@@ -153,6 +155,7 @@ async function loadSVG() {
 
     console.log('height radius', parHeight, parRadius);
     cylinder.setAttribute('height', parHeight);
+    cylinder.setAttribute('radius', parRadius);
     // cylinder.setAttribute('radius',parRadius)
 
 
@@ -201,6 +204,7 @@ async function loadSVG() {
     const parRadius = radiusValue;
     console.log('height radius', parHeight, parRadius);
     // cylinder.setAttribute('height',parHeight)
+    cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
 
     r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
@@ -257,11 +261,20 @@ async function loadSVG() {
       svg.querySelector('.selected').setAttribute('metal', metal);
       const newColor = `rgb(${r},${g},${b})`;
       // set color for 3D particle
-      cylinder.setAttribute('color', newColor);
+      // cylinder.setAttribute('color', newColor);
       // set color for svg
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
+    }
+    if (medium == 'glass') {
+      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
   });
 
@@ -301,7 +314,19 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
+
+
+    if (medium == 'glass') {
+      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    }
   });
+
 
   input5.addEventListener('change', (event) => {
     console.log(`${metal}_${medium}`);
@@ -327,7 +352,7 @@ async function loadSVG() {
 
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
     // get the selected item
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
@@ -337,6 +362,15 @@ async function loadSVG() {
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
+    }
+    if (metal == 'Au') {
+      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
   });
 
@@ -362,7 +396,7 @@ async function loadSVG() {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
     // set color for 3D particle
-    cylinder.setAttribute('color', newColor);
+    // cylinder.setAttribute('color', newColor);
 
     // get the selected item
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
@@ -372,6 +406,15 @@ async function loadSVG() {
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
+    }
+    if (metal == 'Au') {
+      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
   });
 }
