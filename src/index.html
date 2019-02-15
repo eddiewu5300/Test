@@ -89,7 +89,9 @@
             <a-entity cursor="rayOrigin: mouse"></a-entity>
           </a-scene>
         </div>
-        <div class="bottom-ctl"></div>
+        <div class="bottom-ctl">
+          <div id="color-spectrum"></div>
+        </div>
       </div>
       <div class="content">
         <div id="my-stain-glass"></div>
@@ -138,13 +140,16 @@
     <script type="text/javascript" src="js/dialog_interaction.js"></script>
     <script type="text/javascript" src="js/touch_screen_interaction.js"></script>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+    <script type="text/javascript" src="js/color_spectrum.js"></script>
 
-    <script type="text/javascript">
+
+
+
+
+    <!-- <script type="text/javascript">
       let yourVlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v2.0.json',
         description: 'A simple bar chart with embedded data.',
@@ -179,9 +184,9 @@
 
 
 
-      // console.log(yourVlSpec.data.values)
-      vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
-    </script>
+    // console.log(yourVlSpec.data.values)
+    vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
+    </script> -->
 </body>
 
-</html>
+</html> -->

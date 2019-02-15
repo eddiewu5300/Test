@@ -12,6 +12,7 @@
 // eslint-disable-next-line camelcase
 const topCtl = document.querySelector('.top-ctl');
 const bottomCtl = document.querySelector('.bottom-ctl');
+const colorSpectrum = document.querySelector('.color-spectrum')
 const input = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
 const input3 = document.getElementById('metal1');
@@ -264,34 +265,15 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-
-
-
-    for (let r = 1; r <= numRows; r++) {
-      for (let l = 1; l <= numColumns; l++) {
-        const radius = colorMap[`${metal}_${medium}`].R[r][0];
-        const length = colorMap[`${metal}_${medium}`].R[0][l];
-
-        const red = colorMap[`${metal}_${medium}`].R[r][l];
-        const green = colorMap[`${metal}_${medium}`].G[r][l];
-        const blue = colorMap[`${metal}_${medium}`].B[r][l];
-
-        let selected = false;
-        if (r === radIndex && l === lenIndex) selected = true;
-
-        yourVlSpec.data.values.push({
-          length,
-          radius,
-          color: `rgb(${red},${green},${blue})`,
-          selected,
-        });
-      }
+    if (medium == 'glass') {
+      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
-
-    console.log(yourVlSpec.data.values);
-
-
-    vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
   });
 
   input4.addEventListener('change', (event) => {
@@ -329,6 +311,17 @@ async function loadSVG() {
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
+    }
+
+
+    if (medium == 'glass') {
+      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
   });
 
@@ -368,6 +361,15 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
+    if (metal == 'Au') {
+      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    }
   });
 
   input6.addEventListener('change', (event) => {
@@ -402,6 +404,15 @@ async function loadSVG() {
       selectedTarget.style.fill = newColor;
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
+    }
+    if (metal == 'Au') {
+      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
+    } else {
+      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
+      const marks = document.querySelector('.marks')
+      marks.setAttribute("style", 'width: 100%; height: 100%;')
     }
   });
 }
