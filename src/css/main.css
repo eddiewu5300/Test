@@ -234,6 +234,7 @@ header {
   flex-direction: column;
   flex: 4;
   border-top: 2px solid black;
+  background: #ECECEC;
 }
 
 #color-spectrum{
@@ -284,6 +285,7 @@ svg {
   font-size: 1.5em;
   border: 2px solid black;
   border-top: 2px solid transparent;
+  background: #ECECEC;
 }
 
 .rod-length {
