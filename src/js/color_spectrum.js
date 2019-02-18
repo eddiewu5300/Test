@@ -21,6 +21,7 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       encoding: {
         color: {
           field: 'color',
+          type: 'nominal',
           scale: null,
         },
       },
@@ -60,17 +61,26 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
     }
   }
   return yourVlSpec
-  console.log(yourVlSpec.data.values);
+
 }
 
+// function selected_color(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
+//   for (let r = 1; r <= numRows; r++) {
+//     for (let l = 1; l <= numColumns; l++) {
+//       let selected = false;
+//       if (r === radIndex && l === lenIndex) selected = true;
+//       yourVlSpec.data.values.push(selected)
+//     }
+//   }
+// }
+
 function selected_color(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
-  for (let r = 1; r <= numRows; r++) {
-    for (let l = 1; l <= numColumns; l++) {
-      let selected = false;
-      if (r === radIndex && l === lenIndex) selected = true;
-      yourVlSpec.data.values.push(selected)
-    }
+  for (let i = 0; i < yourVlSpec.data.values.length; i++) {
+    yourVlSpec.data.values[i].selected = false;
   }
+  let tmp = (numColumns * radIndex + lenIndex);
+  yourVlSpec.data.values[tmp].selected = true;
+  vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
 }
 
 lenIndex = lenIndex;

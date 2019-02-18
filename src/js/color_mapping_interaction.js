@@ -142,7 +142,7 @@ async function loadSVG() {
     lenIndex = parseInt(event.target.value);
     // checking if the radius of L/R >2
     let radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
-    const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
+    let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
     if (lengthValue / radiusValue < 2) {
       console.log('ratio of L/R < 2!!!');
