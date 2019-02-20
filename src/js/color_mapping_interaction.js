@@ -34,8 +34,8 @@ async function loadSVG() {
   let g = 0;
   let b = 0;
   let svg = null;
-  let numRows = 24;
-  let numColumns = 51;
+  let numRows = colorMap[`${metal}_${medium}`].R.length - 1;
+  let numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
   let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
@@ -64,6 +64,8 @@ async function loadSVG() {
       d.setAttribute('radIndex', radIndex);
     });
   }
+  input.max = numColumns;
+  input2.max = numRows;
   // listen the selected item and store the color, value in class
   svg.addEventListener('click', (evt) => {
     // console.log(evt.target);
