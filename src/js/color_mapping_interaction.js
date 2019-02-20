@@ -134,6 +134,11 @@ async function loadSVG() {
       cylinder.setAttribute('radius', parRadius);
       // evt.target.setAttribute('data-color', newColor);
       // evt.target.style.fill = newColor;
+      if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+      if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+      if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+      if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+      selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
     }
   });
 
@@ -236,7 +241,6 @@ async function loadSVG() {
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
     if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-    console.log('rad,lenth', radIndex, lenIndex);
     selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
@@ -282,15 +286,12 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (medium === 'glass') {
-      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    } else {
-      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
   input4.addEventListener('change', (event) => {
@@ -329,17 +330,12 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-
-
-    if (medium === 'glass') {
-      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    } else {
-      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
 
@@ -378,15 +374,12 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (metal === 'Au') {
-      vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    } else {
-      vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
   input6.addEventListener('change', (event) => {
@@ -422,15 +415,12 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (metal === 'Au') {
-      vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    } else {
-      vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
-      const marks = document.querySelector('.marks');
-      marks.setAttribute("style", 'width: 100%; height: 100%;');
-    }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 }
 
