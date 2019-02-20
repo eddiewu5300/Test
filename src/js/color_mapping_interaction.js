@@ -12,7 +12,7 @@
 // eslint-disable-next-line camelcase
 const topCtl = document.querySelector('.top-ctl');
 const bottomCtl = document.querySelector('.bottom-ctl');
-const colorSpectrum = document.querySelector('.color-spectrum')
+const colorSpectrum = document.querySelector('.color-spectrum');
 const input = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
 const input3 = document.getElementById('metal1');
@@ -181,6 +181,12 @@ async function loadSVG() {
       selectedTarget.setAttribute('lenIndex', lenIndex);
       selectedTarget.setAttribute('radIndex', radIndex);
     }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
   input2.addEventListener('change', (event) => {
@@ -224,6 +230,13 @@ async function loadSVG() {
       selectedTarget.setAttribute('lenIndex', lenIndex);
       selectedTarget.setAttribute('radIndex', radIndex);
     }
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    console.log('rad,lenth', radIndex, lenIndex);
+    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
   input3.addEventListener('change', (event) => {
@@ -267,14 +280,14 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (medium == 'glass') {
+    if (medium === 'glass') {
       vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     } else {
       vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     }
   });
 
@@ -316,14 +329,14 @@ async function loadSVG() {
     }
 
 
-    if (medium == 'glass') {
+    if (medium === 'glass') {
       vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     } else {
       vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     }
   });
 
@@ -363,14 +376,14 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (metal == 'Au') {
+    if (metal === 'Au') {
       vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     } else {
       vegaEmbed('#color-spectrum', silverGlassVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     }
   });
 
@@ -407,14 +420,14 @@ async function loadSVG() {
       // store the current color
       selectedTarget.setAttribute('data-color', newColor);
     }
-    if (metal == 'Au') {
+    if (metal === 'Au') {
       vegaEmbed('#color-spectrum', goldWaterVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     } else {
       vegaEmbed('#color-spectrum', silverWaterVec, { actions: false });
-      const marks = document.querySelector('.marks')
-      marks.setAttribute("style", 'width: 100%; height: 100%;')
+      const marks = document.querySelector('.marks');
+      marks.setAttribute("style", 'width: 100%; height: 100%;');
     }
   });
 }

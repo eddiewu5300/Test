@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 /* eslint-disable no-self-assign */
@@ -82,6 +84,7 @@ function selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
     yourVlSpec.data.values[i].selected = false;
   }
   tmp = (numColumns * radIndex + lenIndex);
+  console.log(tmp);
   yourVlSpec.data.values[tmp].selected = true;
   vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
 }
@@ -98,7 +101,7 @@ const goldGlassVec = colorgraph('Au', 'glass', colorMap.Au_glass.R.length - 1, c
 const silverGlassVec = colorgraph('Ag', 'glass', colorMap.Ag_glass.R.length - 1, colorMap.Ag_glass.R[0].length - 1, colorMap);
 const goldWaterVec = colorgraph('Au', 'water', colorMap.Au_water.R.length - 1, colorMap.Au_water.R[0].length - 1, colorMap);
 const silverWaterVec = colorgraph('Ag', 'water', colorMap.Ag_water.R.length - 1, colorMap.Ag_water.R[0].length - 1, colorMap);
-// selected_color(5, 10, colorMap[`Au_glass`].R.length - 1, colorMap[`Au_glass`].R[0].length - 1, goldGlassVec);
+// selectedColor(5, 10, colorMap.Au_glass.R.length - 1, colorMap.Au_glass.R[0].length - 1, goldGlassVec);
 vegaEmbed('#color-spectrum', goldGlassVec, { actions: false });
 const marks = document.querySelector('.marks');
 // marks.setAttribute('style', 'width: 100%; height: 100%;');
