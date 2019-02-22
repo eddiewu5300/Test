@@ -29,7 +29,8 @@
       <dialog class="mdl-dialog" id="history-dia">
         <div class="container">
           <h1 id="history-head" class="mdl-dialog__title">History of Stained Glass</h1>
-          <img id="history-img" src="/media/grapefruit-slice-332-332.jpg" alt="Grapefruit slice atop a pile of other slices" />
+          <img id="history-img" src="/media/grapefruit-slice-332-332.jpg"
+            alt="Grapefruit slice atop a pile of other slices" />
           <div>
             <p id="history-content">content</p>
           </div>
@@ -45,7 +46,8 @@
         <div class="container">
 
           <h2 id="science-head" class="mdl-dialog__title">Science of Stained Glass</h2>
-          <img id="science-img" src="/media/grapefruit-slice-332-332.jpg" alt="Grapefruit slice atop a pile of other slices" />
+          <img id="science-img" src="/media/grapefruit-slice-332-332.jpg"
+            alt="Grapefruit slice atop a pile of other slices" />
           <div>
             <p id="science-content">content</p>
           </div>
@@ -88,23 +90,14 @@
             </a-assets>
 
             <a-entity light="type: ambient; color: #ffffff"></a-entity>
-            <a-entity light="type: point; intensity: 1; distance: 0"
-                      position="0 200 0"></a-entity>
-            <a-entity light="type: point; intensity: 1; distance: 0"
-                      position="100 200 100"></a-entity>
-            <a-entity light="type: point; intensity: 1; distance: 0"
-                      position="-100 -200 -100"></a-entity>
+            <a-entity light="type: point; intensity: 1; distance: 0" position="0 200 0"></a-entity>
+            <a-entity light="type: point; intensity: 1; distance: 0" position="100 200 100"></a-entity>
+            <a-entity light="type: point; intensity: 1; distance: 0" position="-100 -200 -100"></a-entity>
 
-            <a-cylinder
-              id="cylinder"
-              color="gold"
-              height="51"
-              radius="15"
-              theta-start="0"
-              rotation="90"
+            <a-cylinder id="cylinder" color="gold" height="51" radius="15" theta-start="0" rotation="90"
               material="roughness: 0.1; metalness: 0.5; sphericalEnvMap: #envMap">
             </a-cylinder>
-            <a-entity id="#rig" position="200 0 0" rotation="0 90 0">
+            <a-entity id="#rig" position="100 0 0" rotation="0 90 0">
               <a-entity id="camera" camera></a-entity>
             </a-entity>
           </a-scene>
@@ -115,6 +108,40 @@
       </div>
       <div class="content">
         <div id="my-stain-glass"></div>
+      </div>
+      <div class="svg-selector">
+        <button id="change-designs" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Change to other designs
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="change-designs">
+          <li class="mdl-menu__item" id="butterfly">Butterfly</li>
+          <li class="mdl-menu__item" id="flower">Flower </li>
+          <li class="mdl-menu__item" id="fish">Fish</li>
+          <li class="mdl-menu__item" id="cactus">Cactus</li>
+        </ul>
+        <!-- <button id="change-file-but" type="button"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Change to other design</button>
+        <dialog class="mdl-dialog" id="change-file-dia">
+          <div class="container">
+            <div id="flower">
+              <button type="button"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">flower</button>
+            </div>
+            <div id="butterfly">
+              <button type="button"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">butterfly</button>
+            </div>
+            <div id="cactus">
+              <button type="button"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">cactus</button>
+            </div>
+            <div id="fish">
+              <button type="button"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">fish</button>
+            </div>
+          </div>
+        </dialog> -->
       </div>
     </div>
 
@@ -154,7 +181,8 @@
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
 
 
-    <script type="text/javascript" src="data/AgandAu_rod_waterandglass_mesh2nm_allDim_avgOrient_unpol_Transmittance_RGBData_normalized_absmin0_absmax2.5.js"></script>
+    <script type="text/javascript"
+      src="data/AgandAu_rod_waterandglass_mesh2nm_allDim_avgOrient_unpol_Transmittance_RGBData_normalized_absmin0_absmax2.5.js"></script>
     <!-- <script type="text/javascript" src="data/Ag_Au_rod_water_glass_simul.js"></script> -->
     <script type="text/javascript" src="js/color_mapping_interaction.js"></script>
     <script type="text/javascript" src="js/dialog_interaction.js"></script>
@@ -209,4 +237,4 @@
     </script> -->
 </body>
 
-</html> -->
+</html>
