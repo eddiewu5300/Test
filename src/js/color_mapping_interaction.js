@@ -104,12 +104,14 @@ async function loadSVG() {
 
       if (metal === 'Au') {
         document.querySelector('#metal1').checked = true;
+        cylinder.setAttribute('color', 'gold');
       }
       if (medium === 'glass') {
         document.querySelector('#medium1').checked = true;
       }
       if (metal === 'Ag') {
         document.querySelector('#metal2').checked = true;
+        cylinder.setAttribute('color', 'silver');
       }
       if (medium === 'water') {
         document.querySelector('#medium2').checked = true;
@@ -133,8 +135,7 @@ async function loadSVG() {
       console.log('height radius', parHeight, parRadius);
       cylinder.setAttribute('height', parHeight);
       cylinder.setAttribute('radius', parRadius);
-      // evt.target.setAttribute('data-color', newColor);
-      // evt.target.style.fill = newColor;
+      cylinder.setAttribute('colot', newColor);
       if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
       if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
       if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
