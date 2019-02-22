@@ -76,21 +76,11 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
   return yourVlSpec;
 }
 
-// function selected_color(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
-//   for (let r = 1; r <= numRows; r++) {
-//     for (let l = 1; l <= numColumns; l++) {
-//       let selected = false;
-//       if (r === radIndex && l === lenIndex) selected = true;
-//       yourVlSpec.data.values.push(selected)
-//     }
-//   }
-// }
-
 function selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
   for (let i = 0; i < yourVlSpec.data.values.length; i++) {
     yourVlSpec.data.values[i].selected = false;
   }
-  console.log('num', numColumns, numRows)
+  console.log('num', numColumns, numRows);
   console.log('index', lenIndex, radIndex);
   tmp = (numColumns * (radIndex - 1) + lenIndex) - 1;
   console.log('tmp', tmp);
