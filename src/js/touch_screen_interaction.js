@@ -167,6 +167,11 @@ function touchInteraction() {
       selectedTarget.setAttribute('radIndex', radIndex);
     }
     console.log('________')
+    if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
+    if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
+    if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
+    if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
+    selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
   });
 }
 touchInteraction();
