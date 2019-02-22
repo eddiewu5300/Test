@@ -66,6 +66,7 @@ async function loadSVG() {
   }
   input.max = numColumns;
   input2.max = numRows;
+  console.log('indemax', input.max, input2.max);
   // listen the selected item and store the color, value in class
   svg.addEventListener('click', (evt) => {
     // console.log(evt.target);
@@ -138,13 +139,12 @@ async function loadSVG() {
       if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
       if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
       if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-      selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+      selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     }
   });
 
   input.addEventListener('change', (event) => {
     // console.log(event);
-    console.log(event.target.value);
 
     lenIndex = parseInt(event.target.value);
     // checking if the radius of L/R >2
@@ -163,8 +163,6 @@ async function loadSVG() {
     console.log('height radius', parHeight, parRadius);
     cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
-    // cylinder.setAttribute('radius',parRadius)
-
 
     r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
     g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
@@ -192,7 +190,7 @@ async function loadSVG() {
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
     if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
@@ -203,12 +201,16 @@ async function loadSVG() {
     radIndex = parseInt(event.target.value);
 
     // checking if the ratio of L/R >2
-    const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
+    let radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
     let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
     if (lengthValue / radiusValue < 2) {
       console.log('ratio of L/R < 2!!!');
       lenIndex = (radiusValue * 2 - firstLengthValue) / 2 + 1;
+      console.log('Lindex', lenIndex);
+      if (lenIndex > numColumns) {
+        lenIndex = numColumns;
+      }
       input.value = lenIndex;
       lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     }
@@ -241,7 +243,7 @@ async function loadSVG() {
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
     if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 

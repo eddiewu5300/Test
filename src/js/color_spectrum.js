@@ -89,8 +89,10 @@ function selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec) {
   for (let i = 0; i < yourVlSpec.data.values.length; i++) {
     yourVlSpec.data.values[i].selected = false;
   }
-  tmp = (numColumns * radIndex + lenIndex);
-  console.log(tmp);
+  console.log('num', numColumns, numRows)
+  console.log('index', lenIndex, radIndex);
+  tmp = (numColumns * (radIndex - 1) + lenIndex) - 1;
+  console.log('tmp', tmp);
   yourVlSpec.data.values[tmp].selected = true;
   vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
 }
