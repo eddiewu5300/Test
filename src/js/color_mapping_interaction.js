@@ -292,7 +292,7 @@ async function loadSVG() {
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
     if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 
@@ -336,7 +336,7 @@ async function loadSVG() {
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
     if (medium === 'water' && metal === 'Ag') { yourVlSpec = silverWaterVec; }
-    selectedColor(radIndex, lenIndex, numRows - 1, numColumns - 1, yourVlSpec);
+    selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
 

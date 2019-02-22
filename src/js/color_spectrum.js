@@ -66,12 +66,13 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
     }
   }
   if (boxHeight >= boxWidth) {
-    yourVlSpec.height = boxHeight;
-    yourVlSpec.width = boxHeight;
-  } else {
     yourVlSpec.height = boxWidth;
     yourVlSpec.width = boxWidth;
+  } else {
+    yourVlSpec.height = boxHeight;
+    yourVlSpec.width = boxHeight;
   }
+  console.log('spec', yourVlSpec.height, yourVlSpec.width);
   return yourVlSpec;
 }
 
