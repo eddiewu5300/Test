@@ -65,8 +65,13 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       });
     }
   }
-  yourVlSpec.height = boxHeight;
-  yourVlSpec.width = boxWidth;
+  if (boxHeight >= boxWidth) {
+    yourVlSpec.height = boxHeight;
+    yourVlSpec.width = boxHeight;
+  } else {
+    yourVlSpec.height = boxWidth;
+    yourVlSpec.width = boxWidth;
+  }
   return yourVlSpec;
 }
 
@@ -106,8 +111,8 @@ const silverWaterVec = colorgraph('Ag', 'water', colorMap.Ag_water.R.length - 1,
 // selectedColor(5, 10, colorMap.Au_glass.R.length - 1, colorMap.Au_glass.R[0].length - 1, goldGlassVec);
 let vegView = null;
 vegaEmbed('#color-spectrum', goldGlassVec, { actions: false }).then(result => vegView = result.view);
-vegView.width(500);
-vegView.run();
+// vegView.width(500);
+// vegView.run();
 // const marks = document.querySelector('.marks');
 // marks.setAttribute('style', 'width: 100%; height: 100%;');
 
