@@ -48,7 +48,7 @@ async function loadSVG(svgname) {
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
   if (svg) {
-    svg.querySelectorAll('polygon, path, rect, g').forEach((d) => {
+    svg.querySelectorAll('polygon, path, rect, g, circle, ellipse').forEach((d) => {
       // console.log(d);
       d.classList.add('color-selector');
     });

@@ -1,9 +1,10 @@
+
+
 /* eslint-disable no-console */
 const menu = document.querySelector('#menu');
-const robot = document.querySelector('#robot');
-const aaa = document.querySelector('#aaa');
 
-aaa.addEventListener('click', (evt) => {
-  console.log('abc');
-  console.log(evt);
+menu.addEventListener('click', (evt) => {
+  const svgfile = evt.target.getAttribute('value');
+  document.querySelector('#my-stain-glass svg').remove();
+  loadSVG(svgfile);
 });
