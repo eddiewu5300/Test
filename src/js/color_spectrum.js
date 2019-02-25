@@ -30,6 +30,10 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       mark: 'rect',
       encoding: {
         color: {
+          condition: {
+            test: 'datum.selected',
+            value: 'white',
+          },
           field: 'color',
           type: 'nominal',
           scale: null,
@@ -37,16 +41,16 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       },
     }, {
       mark: 'circle',
-      size: 200,
+      size: 500,
       encoding: {
 
         color: {
           condition: {
             test: 'datum.selected',
-            value: 'cyan',
-            size: 200,
+            value: 'red',
+            size: 500,
           },
-          config: { circle: { size: 100 } },
+          config: { circle: { size: 500 } },
           value: 'rgba(0, 0, 0, 0)',
         },
       },
