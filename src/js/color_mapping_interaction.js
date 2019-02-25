@@ -29,7 +29,7 @@ let medium = 'glass';
 let selectedTarget = null;
 
 // get the exteranl svg file and parse it into DOM
-async function loadSVG() {
+async function loadSVG(svgname) {
   let r = 0;
   let g = 0;
   let b = 0;
@@ -40,7 +40,7 @@ async function loadSVG() {
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
   // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-  const response = await fetch('stain_glass_files/FLOWER.svg');
+  const response = await fetch(`stain_glass_files/${svgname}.svg`);
   const text = await response.text();
   // console.log(text, 'texttexttext');
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
@@ -427,4 +427,4 @@ async function loadSVG() {
   });
 }
 
-loadSVG();
+loadSVG("FISH");

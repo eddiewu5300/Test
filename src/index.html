@@ -113,16 +113,41 @@
         <button id="change-designs" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
           Change to other designs
         </button>
-        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="change-designs">
-          <li class="mdl-menu__item" id="butterfly">Butterfly</li>
-          <li class="mdl-menu__item" id="flower">Flower </li>
-          <li class="mdl-menu__item" id="fish">Fish</li>
-          <li class="mdl-menu__item" id="cactus">Cactus</li>
-          <li class="mdl-menu__item" id="car">Racecar</li>
-          <li class="mdl-menu__item" id="robot">Robot </li>
-          <li class="mdl-menu__item" id="rocket">Rocket</li>
-          <li class="mdl-menu__item" id="superhero">Superhero</li>
+        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="change-designs" id="menu">
+          <li class="mdl-menu__item" id="butterfly" value="BUTTERFLY">Butterfly </li>
+          <li class="mdl-menu__item" id="flower" value="FLOWER">Flower </li>
+          <li class="mdl-menu__item" id="fish" value="FISH">Fish</li>
+          <li class="mdl-menu__item" id="cactus" value="CACTUS">Cactus</li>
+          <li class="mdl-menu__item" id="car" value="RACECAR">RaceCar</li>
+          <li class="mdl-menu__item" id="robot" value="ROBOT">Robot </li>
+          <li class="mdl-menu__item" id="rocket" value="ROCKET">Rocket</li>
+          <li class="mdl-menu__item" id="superhero" value="SUPERHERO">SuperHero</li>
         </ul>
+
+        <style>
+          .demo-list-item {
+            width: 300px;
+          }
+        </style>
+
+        <ul class="demo-list-item mdl-list">
+          <li class="mdl-list__item" id="aaa">
+            <span class="mdl-list__item-primary-content">
+              Bryan Cranston
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              Aaron Paul
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              Bob Odenkirk
+            </span>
+          </li>
+        </ul>
+
         <!-- <button id="change-file-but" type="button"
           class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
           Change to other design</button>
