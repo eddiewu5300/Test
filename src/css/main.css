@@ -265,7 +265,11 @@ header {
 #flower,
 #butterfly,
 #cactus,
-#fish{
+#fish,
+#car,
+#robot,
+#rocket,
+#superhero{
   flex: 1;
   height: 100%;
   flex:1;
