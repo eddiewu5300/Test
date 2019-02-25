@@ -14,12 +14,17 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
     description: 'A simple bar chart with embedded data.',
     width: 200,
     height: 200,
+    // config: { axis: null, labels: null },
     data: {
       values: [],
     },
     encoding: {
-      x: { field: 'length', type: 'ordinal', scale: { rangeStep: null } },
-      y: { field: 'radius', type: 'ordinal', scale: { rangeStep: null } },
+      x: {
+        field: 'length', type: 'ordinal', scale: { rangeStep: null }, axis: null,
+      },
+      y: {
+        field: 'radius', type: 'ordinal', scale: { rangeStep: null }, axis: null,
+      },
     },
     layer: [{
       mark: 'rect',
@@ -32,12 +37,16 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       },
     }, {
       mark: 'circle',
+      size: 200,
       encoding: {
+
         color: {
           condition: {
             test: 'datum.selected',
             value: 'cyan',
+            size: 200,
           },
+          config: { circle: { size: 100 } },
           value: 'rgba(0, 0, 0, 0)',
         },
       },
@@ -50,9 +59,19 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
       const radius = colorMap[`${metal}_${medium}`].R[r][0];
       const length = colorMap[`${metal}_${medium}`].R[0][l];
 
-      const red = colorMap[`${metal}_${medium}`].R[r][l];
-      const green = colorMap[`${metal}_${medium}`].G[r][l];
-      const blue = colorMap[`${metal}_${medium}`].B[r][l];
+      let red = colorMap[`${metal}_${medium}`].R[r][l];
+      let green = colorMap[`${metal}_${medium}`].G[r][l];
+      let blue = colorMap[`${metal}_${medium}`].B[r][l];
+
+      if (red === '_NaN_') {
+        red = 256;
+      }
+      if (green === '_NaN_') {
+        green = 256;
+      }
+      if (blue === '_NaN_') {
+        blue = 256;
+      }
 
       let selected = false;
       if (r === radIndex && l === lenIndex) selected = true;
