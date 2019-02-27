@@ -258,10 +258,22 @@ header {
   background: #ECECEC;
 }
 
-#change-designs{
-  height: 10em;
-  font-size: 1.5em;
+#change-file-buttons{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+.change-designs{
+  flex: 0.5 ;
+  height: 100%;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
 #flower,
 #butterfly,
 #cactus,
@@ -272,7 +284,6 @@ header {
 #superhero{
   flex: 1;
   height: 100%;
-  flex:1;
   text-align: center;
   font-size: 1.5em;
 }
