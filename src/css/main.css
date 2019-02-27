@@ -351,10 +351,10 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 10px;
   cursor: pointer;
   animate: 0.2s;
-  box-shadow: 1px 1px 1px #000000;
-  background: #3071A9;
+  /* box-shadow: 1px 1px 1px #000000; */
+  background:  #4099ff;
   border-radius: 5px;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
 }
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #000000;
