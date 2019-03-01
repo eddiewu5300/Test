@@ -130,30 +130,40 @@ header {
   width: 60%;
 }
 
-#science-dia .container,
-#scientist-dia .container
-#history-dia .container
+#science-container,
+#scientist-container
+#hiscontainer
 {
+  height: 100%;
+  width: 100%;
   display: flex;
   border:transparent;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+
 }
 
 #history-head{
   flex:1;
+  display: flex;
+  flex-direction: row;
 }
-#history-content{
-  flex:2;
+
+h1 {
+  flex: 9;
 }
-#history-img{
-  flex:4;
-}
+
 #history-close{
   flex:1;
 
 }
+
+#history-content{
+  flex:6;
+}
+#his-ref{
+  flex:1;
+}
+
 
 
 #science-head{
@@ -402,7 +412,14 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 
-
+p {
+  font-family: cursive;
+  font-size: 15pt;
+}
+.ref {
+  font-size: 12pt;
+  font-family: 'Times New Roman', Times, serif
+}
 
 
 
