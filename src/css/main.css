@@ -174,8 +174,8 @@ h1 {
 
 #history-content p {
   font-family: cursive;
-  font-size: 18pt;
-  float: 6px;
+  font-size: 2em;
+
 }
 
 #his-img {
@@ -186,7 +186,7 @@ h1 {
 }
 
 #his-ref p{
-  font-size: 12pt;
+  font-size: 1em;
   font-family: 'Times New Roman'
 }
 
