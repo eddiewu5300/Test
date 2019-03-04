@@ -28,27 +28,28 @@
         Glass</button>
       <dialog class="mdl-dialog" id="history-dia">
 
-        <div class="his-container">
+        <div id="his-container">
           <div id="history-head">
             <h1 class="mdl-dialog__title">History of Stained Glass</h1>
             <div class="mdl-dialog__actions" id="history-close">
               <button type="button" class="mdl-button close">close</button>
             </div>
           </div>
-          <!-- <img id="history-img" src="/media/grapefruit-slice-332-332.jpg"
-            alt="Grapefruit slice atop a pile of other slices" /> -->
+
           <div class="text" id="history-content">
+            <img id="his-img" src="/media/stain-glass1.jpeg" alt="Stain Glass" />
             <p>
               Stained glass or colored glass has been made by artisans since ancient
-              times.
-              Although the exact origins are unknown, ancient Egyptians were likely the first people to discover the
+              times. Although the exact origins are unknown, ancient Egyptians were likely the first people to discover
+              the
               process of making colored glass. In fact, the oldest known examples of colored glass are Egyptian glass
               beads from about 2700 BC. The Kitab al-Durra al-Maknuna (The Book of the Hidden Pearl), attributed to 8th
               century Persian alchemist Jabir ibn Hayyan, describes the production of colored glass in ancient Egypt and
               contains 46 original recipes for producing colored glass.
               Windows with colored glass decorated the homes of wealthy Romans in the first century AD, and early
               examples of stained glass windows can be found in cathedrals and mosques throughout Europe and the Middle
-              East.
+              East.<br />
+              <br />
               One of the oldest known examples of a window containing multiple pieces of colored glass can be found at
               St. Paul’s Monastery in Jarrow, England and is dated from 686 AD. However, the elaborate stained glass
               windows that many people are familiar with did not emerge until later. Depictions of religious stories
@@ -59,21 +60,22 @@
               architectural element to adopting more painting-like qualities to even abstract designs in the 20th
               century. Although innovations in glass production have also influenced these designs, as evident in the
               works of 19th century glass artists La Farge and Tiffany, who created opalescent stained class, for
-              example.
+              example.<br />
+              <br />
               While the ability to produce colored glass has existed for centuries, the understanding of what gives rise
               to the different colors is more recent. This understanding is providing artists with new materials to
               create with, and scientists are using this understanding to provide platforms for harnessing solar energy,
               targeted cancer treatment, and more!</p>
+
           </div>
           <div class="ref" id="his-ref">
             <p>References:
               Virginia Chieffo Raguin, Stained Glass: From its Origins to the Present, Harry N. Abrams Publisher, 1st
-              edition, 2003, p. 288.
-              John Harries and Carola Hicks, Discovering Stained Glass, Shire Publisher, 3rd edition, 2008, p. 96.
+              edition, 2003, p. 288.<br />
+              John Harries and Carola Hicks, Discovering Stained Glass, Shire Publisher, 3rd edition, 2008, p. 96.<br />
               Ahmad Y. Al-hassan, An Eighth Century Arabic Treatise on the Colouring of Glass: Kitab al-Durra
-              al-Maknuna
-              (the Book of the Hidden Pearl) of Jabir ibn Hayyan, Arabic Sciences and Philosophy, 19(01): 121-156,
-              3009.
+              al-Maknuna (the Book of the Hidden Pearl) of Jabir ibn Hayyan, Arabic Sciences and Philosophy, 19(01):
+              121-156,3009.
             </p>
           </div>
 
@@ -211,8 +213,6 @@
 
     <script type="text/javascript"
       src="data/AgandAu_rod_waterandglass_mesh2nm_allDim_avgOrient_unpol_Transmittance_RGBData_normalized_absmin0_absmax2.5.js"></script>
-
-    <!-- <script type="text/javascript" src="data/Ag_Au_rod_water_glass_simul.js"></script> -->
     <script type="text/javascript" src="js/color_mapping_interaction.js"></script>
     <script type="text/javascript" src="js/dialog_interaction.js"></script>
     <script type="text/javascript" src="js/touch_screen_interaction.js"></script>
@@ -227,44 +227,7 @@
 
 
 
-    <!-- <script type="text/javascript">
-      let yourVlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v2.0.json',
-        description: 'A simple bar chart with embedded data.',
-        data: {
-          values: [],
-        },
-        encoding: {
-          x: { field: 'length', type: 'ordinal', scale: { rangeStep: null } },
-          y: { field: 'radius', type: 'ordinal', scale: { rangeStep: null } },
-        },
-        layer: [{
-          mark: 'rect',
-          encoding: {
-            color: {
-              field: 'color',
-              scale: null,
-            },
-          },
-        }, {
-          mark: 'circle',
-          encoding: {
-            color: {
-              condition: {
-                test: 'datum.selected',
-                value: 'cyan',
-              },
-              value: 'rgba(0, 0, 0, 0)',
-            },
-          },
-        }],
-      };
 
-
-
-    // console.log(yourVlSpec.data.values)
-    vegaEmbed('.bottom-ctl', yourVlSpec, { actions: false });
-    </script> -->
 </body>
 
 </html>
