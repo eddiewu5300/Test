@@ -45,6 +45,7 @@ async function loadSVG(svgname) {
   // console.log(text, 'texttexttext');
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
   svg = document.querySelector('svg');
+  // svg.insertAdjacentHTML("afterend", '<use xlink:href="" />')
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
   if (svg) {
@@ -55,6 +56,7 @@ async function loadSVG(svgname) {
   }
   // add attribute to svg
   if (svg) {
+
     svg.querySelectorAll('.color-selector').forEach((d) => {
       // console.log(d);
       d.setAttribute('data-color', `rgb(${r},${g},${b})`);
@@ -64,6 +66,15 @@ async function loadSVG(svgname) {
       d.setAttribute('radIndex', radIndex);
     });
   }
+  svgList = svg.querySelectorAll('.color-selector');
+  for (let i = 2; i < svgList.length; i++) {
+    if (svgList[i].getAttribute('id')) {
+      continue
+    } else {
+      svgList[i].setAttribute('id', `id${i}`);
+    }
+  }
+
   input.max = numColumns;
   input2.max = numRows;
   console.log('indemax', input.max, input2.max);
@@ -93,6 +104,14 @@ async function loadSVG(svgname) {
       r = rgbValue[0];
       g = rgbValue[1];
       b = rgbValue[2];
+
+      id = evt.target.getAttribute('id')
+      console.log(id)
+      use = svg.querySelector('use')
+      use.setAttribute('xlink:href', `#${id}`)
+      use.setAttribute('stroke', 'red')
+      use.setAttribute('stroke-width', '10')
+      // svg.querySelector('#id3').setAttribute('fill', 'blue')
 
       lenIndex = parseInt(evt.target.getAttribute('lenIndex'));
       radIndex = parseInt(evt.target.getAttribute('radIndex'));
@@ -135,7 +154,7 @@ async function loadSVG(svgname) {
       console.log('height radius', parHeight, parRadius);
       cylinder.setAttribute('height', parHeight);
       cylinder.setAttribute('radius', parRadius);
-      cylinder.setAttribute('colot', newColor);
+      // cylinder.setAttribute('color', newColor);
       if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
       if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
       if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }

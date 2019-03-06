@@ -636,7 +636,7 @@ input[type=range]::-webkit-slider-thumb {
   stroke-width: 3;
 }
 .color-selector.selected{
-  box-shadow: 5px 5px 5px #000000;
+
   stroke: red;
   stroke-width: 3;
 }
