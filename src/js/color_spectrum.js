@@ -32,7 +32,7 @@ function colorgraph(metal, medium, numRows, numColumns, colorMap, radIndex = 1, 
         color: {
           condition: {
             test: 'datum.selected',
-            value: 'black',
+            value: 'white',
           },
           field: 'color',
           type: 'nominal',
