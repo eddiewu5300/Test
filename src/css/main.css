@@ -200,14 +200,9 @@ h1, h2 {
   margin: 0 0 1em 2em;
 }
 
-<<<<<<< HEAD
-#his-ref p{
-  font-size: 1em;
-=======
 #his-ref p,
 #science-ref p{
-  font-size: 12pt;
->>>>>>> supplemental-info
+  font-size: 1em;
   font-family: 'Times New Roman'
 }
 
