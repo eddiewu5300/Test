@@ -18,7 +18,7 @@ setup();
 
 function startTimer() {
   // wait 10 before calling goInactive
-  timeoutID = window.setTimeout(goInactive, 10000000);
+  timeoutID = window.setTimeout(goInactive, 1000);
 }
 
 function resetTimer() {
@@ -29,10 +29,23 @@ function resetTimer() {
 }
 
 function goInactive() {
-  window.location.href = 'idle.html';
+  const randomInt = getRandomInt(3);
+  console.log(randomInt);
+
+  document.querySelector('#idle-page img').src = `media/stained-glass${randomInt}.jpg`;
+  document.querySelector('#idle-page').style.visibility = 'visible';
+  document.querySelector('#idle-page h1').style.visibility = 'visible';
+  // window.location.href = 'idle.html';
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
 
 function goActive() {
+  document.querySelector('#idle-page').style.visibility = 'hidden';
+  document.querySelector('#idle-page h1').style.visibility = 'hidden';
+
   // do something
   // window.location.href = 'index.html';
   startTimer();
