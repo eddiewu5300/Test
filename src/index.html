@@ -168,7 +168,8 @@
             <a-entity light="type: point; intensity: 1; distance: 0" position="100 200 100"></a-entity>
             <a-entity light="type: point; intensity: 1; distance: 0" position="-100 -200 -100"></a-entity>
 
-            <a-cylinder id="cylinder" color="gold" height="51" radius="15" theta-start="0" rotation="90"
+            <a-cylinder id="cylinder" color="gold" height="51" radius="15" theta-start="0" rotation="90 0 0"
+              animation="property: rotation; to: 90 360 0; loop: true; dur: 18000"
               material="roughness: 0.1; metalness: 0.5; sphericalEnvMap: #envMap">
             </a-cylinder>
             <a-entity id="#rig" position="100 0 0" rotation="0 90 0">
@@ -261,7 +262,7 @@
     <img src="media/stained-glass1.jpg" alt="none" style="height:100%; width:100%; filter:blur(5px) brightness(70%); ">
     <h1 style="position: absolute; top: 50%; left: 0px; text-align: center;   align-self: center;
       align-items: center;visibility: visible; height: 100%; width: 100%; color: white; font-size: 10em;">
-      Coloring with
+      Coloring with<br />
       Nanoparticles</h1>
   </div>
 </body>
