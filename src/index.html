@@ -2,12 +2,31 @@
 <html class="no-js" lang="">
 
 <head>
+
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>Chemistry Project</title>
   <meta name="description" content="template" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136145099-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'UA-136145099-1');
+  </script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-136145099-1', 'auto');
+    ga('send', 'pageview');
+  </script>
   <script src="https://unpkg.com/aframe@0.9.0/dist/aframe-v0.9.0.min.js"></script>
 
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -24,7 +43,8 @@
 <body>
   <div class="wrapper">
     <header>
-      <button class="mdl-button mdl-js-button mdl-button--raised" id="history-but" type="button">History of Stained
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="history-but" type="button"
+        onclick="ga('send', 'event', 'supplementary Info', 'click', 'history');">History of Stained
         Glass</button>
       <dialog class="mdl-dialog" id="history-dia">
 
@@ -81,7 +101,8 @@
         </div>
       </dialog>
 
-      <button id="science-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
+      <button id="science-but" type="button" class="mdl-button mdl-js-button mdl-button--raised"
+        onclick="ga('send', 'event', 'supplementary Info', 'click', 'science');">
         Science of Stained Glass</button>
       <dialog class="mdl-dialog" id="science-dia">
         <div class="science-container">
@@ -132,13 +153,14 @@
         </div>
       </dialog>
 
-      <button id="scientist-but" type="button" class="mdl-button mdl-js-button mdl-button--raised">
+      <button id="scientist-but" type="button" class="mdl-button mdl-js-button mdl-button--raised"
+        onclick="ga('send', 'event', 'supplementary Info', 'click', 'scientist');">
         Meet the Scientist</button>
       <dialog class="mdl-dialog" id="scientist-dia">
         <div class="scientist-container">
           <h3 id="scientist-head" class="mdl-dialog__title">Meet the Scientist</h3>
 
-          <video controls id="scientist-video">
+          <video controls id="scientist-video" onload="ga('send', 'event', 'video', 'play');">
             <source src="myVideo.mp4" type="video/mp4">
             <source src="media/flower.webm" type="video/webm">
             <p>Your browser doesn't support HTML5 video. Here is
@@ -158,7 +180,8 @@
     <div class="container">
       <div class="left-box">
         <div class="top-ctl">
-          <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC">
+          <a-scene embedded vr-mode-ui="enabled: false" background="color: #ECECEC"
+            on="ga('send', 'event', 'interaction', 'touchscreen');">
             <a-assets>
               <img id="envMap" src="media/st_chappelle.jpg">
             </a-assets>
@@ -169,7 +192,7 @@
             <a-entity light="type: point; intensity: 1; distance: 0" position="-100 -200 -100"></a-entity>
 
             <a-cylinder id="cylinder" color="gold" height="51" radius="15" theta-start="0" rotation="90 0 0"
-              animation="property: rotation; to: 90 360 0; loop: true; dur: 18000"
+              animation="property: rotation; to: 90 360 0; loop: true; dur: 18000 ;easing:linear"
               material="roughness: 0.1; metalness: 0.5; sphericalEnvMap: #envMap">
             </a-cylinder>
             <a-entity id="#rig" position="100 0 0" rotation="0 90 0">
@@ -182,10 +205,11 @@
         </div>
       </div>
       <div class="content">
-        <div id="my-stain-glass"></div>
+        <div id="my-stain-glass" onclick="ga('send', 'event', 'interaction', 'select', 'svg-component');"></div>
       </div>
       <div class="svg-selector">
-        <div class="container" id="change-file-buttons">
+        <div class="container" id="change-file-buttons"
+          onclick="ga('send', 'event', 'interaction', 'select', 'svg-file');">
 
           <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="butterfly"
             value="BUTTERFLY">Butterfly </button>
@@ -209,28 +233,34 @@
     <div class="bar-ctl">
       <div class="rod-length">
         <label for="item">Length:</label>
-        <input type="range" name="number" id="number1" min="1" max="51" value="1" />
+        <input type="range" name="number" id="number1" min="1" max="51" value="1"
+          onchange="ga('send', 'event', 'interaction', 'change', 'length');" />
 
       </div>
       <div class="rod-radius">
         <label for="item">Radius:</label>
-        <input type="range" name="number" id="number2" min="1" max="24" value="1" />
+        <input type="range" name="number" id="number2" min="1" max="24" value="1"
+          onchange="ga('send', 'event', 'interaction', 'change', 'radius');" />
 
       </div>
 
       <div class="metal-comp">
         <label for="item">Metal:</label><br />
         <div>
-          <input type="radio" name="metal" id="metal1" value="Au" checked class="radio" />Gold
-          <input type="radio" name="metal" id="metal2" value="Ag" class="radio" /> Silver
+          <input type="radio" name="metal" id="metal1" value="Au" checked class="radio"
+            onchange="ga('send', 'event', 'interaction', 'change', 'metal');" />Gold
+          <input type="radio" name="metal" id="metal2" value="Ag" class="radio"
+            onchange="ga('send', 'event', 'interaction', 'change', 'metal');" /> Silver
         </div>
 
       </div>
       <div class="medium-comp">
         <label for="item">Medium:</label><br />
         <div>
-          <input type="radio" name="medium" id="medium1" value="glass" class="radio" checked />Glass
-          <input type="radio" name="medium" id="medium2" value="water" class="radio" /> Water
+          <input type="radio" name="medium" id="medium1" value="glass" class="radio" checked
+            onchange="ga('send', 'event', 'interaction', 'change', 'medium');" />Glass
+          <input type="radio" name="medium" id="medium2" value="water" class="radio"
+            onchange="ga('send', 'event', 'interaction', 'change', 'medium');" /> Water
         </div>
       </div>
       <footer>
