@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 let timeoutID;
@@ -18,7 +19,7 @@ setup();
 
 function startTimer() {
   // wait 10 before calling goInactive
-  timeoutID = window.setTimeout(goInactive, 1000000);
+  timeoutID = window.setTimeout(goInactive, 100000);
 }
 
 function resetTimer() {
@@ -30,11 +31,12 @@ function resetTimer() {
 
 function goInactive() {
   const randomInt = getRandomInt(3);
-
+  ga('send', 'event', 'user visit', 'visit');
 
   document.querySelector('#idle-page img').src = `media/stained-glass${randomInt}.jpg`;
   document.querySelector('#idle-page').style.visibility = 'visible';
   document.querySelector('#idle-page h1').style.visibility = 'visible';
+
 }
 
 function getRandomInt(max) {

@@ -22,6 +22,7 @@ function touchInteraction() {
   let downStart = 0;
   hammertime.get('pinch').set({ enable: true });
   hammertime.on('pinchstart', (pinchstart) => {
+    ga('send', 'event', 'interaction', 'pinch', '3d particle');
     // // console.log('start', pinchstart)
     // // console.log('X', pinchstart.deltaX);
     // // console.log('Y', pinchstart.deltaY);
