@@ -2,7 +2,6 @@
 /* eslint-disable quotes */
 /* eslint-disable prefer-const */
 /* eslint-disable no-shadow */
-/* eslint-disable no-console */
 /* eslint-disable radix */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-undef */
@@ -76,11 +75,11 @@ async function loadSVG(svgname) {
 
   input.max = numColumns;
   input2.max = numRows;
-  console.log('indemax', input.max, input2.max);
+  // console.log('indemax', input.max, input2.max);
   // listen the selected item and store the color, value in class
   svg.addEventListener('click', (evt) => {
     // console.log(evt.target);
-    console.log("selected");
+    // console.log("selected");
     const targetColor = evt.target.getAttribute('data-color');
 
     if (targetColor) {
@@ -105,7 +104,7 @@ async function loadSVG(svgname) {
       b = rgbValue[2];
 
       id = evt.target.getAttribute('id');
-      console.log(id);
+      // console.log(id);
       use = svg.querySelector('use');
       use.setAttribute('xlink:href', `#${id}`);
       use.setAttribute('stroke', 'red');
@@ -146,11 +145,11 @@ async function loadSVG(svgname) {
       // console.log('length int',firstLengthValue)
       const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
       const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
-      console.log('rad val', radiusValue);
+      // console.log('rad val', radiusValue);
       const parHeight = lengthValue;
       const parRadius = radiusValue;
 
-      console.log('height radius', parHeight, parRadius);
+      // console.log('height radius', parHeight, parRadius);
       cylinder.setAttribute('height', parHeight);
       cylinder.setAttribute('radius', parRadius);
       // cylinder.setAttribute('color', newColor);
@@ -171,7 +170,7 @@ async function loadSVG(svgname) {
     let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
     if (lengthValue / radiusValue < 2) {
-      console.log('ratio of L/R < 2!!!');
+      // console.log('ratio of L/R < 2!!!');
       radIndex = Math.floor((lengthValue / 2 - firstRadiusValue) / 2) + 1;
       input2.value = radIndex;
       radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
@@ -179,7 +178,7 @@ async function loadSVG(svgname) {
     const parHeight = lengthValue;
     const parRadius = radiusValue;
 
-    console.log('height radius', parHeight, parRadius);
+    // console.log('height radius', parHeight, parRadius);
     cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
 
@@ -224,9 +223,9 @@ async function loadSVG(svgname) {
     let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
     if (lengthValue / radiusValue < 2) {
-      console.log('ratio of L/R < 2!!!');
+      // console.log('ratio of L/R < 2!!!');
       lenIndex = (radiusValue * 2 - firstLengthValue) / 2 + 1;
-      console.log('Lindex', lenIndex);
+      // console.log('Lindex', lenIndex);
       if (lenIndex > numColumns) {
         lenIndex = numColumns;
       }
@@ -236,7 +235,7 @@ async function loadSVG(svgname) {
 
     const parHeight = lengthValue;
     const parRadius = radiusValue;
-    console.log('height radius', parHeight, parRadius);
+    // console.log('height radius', parHeight, parRadius);
     // cylinder.setAttribute('height',parHeight)
     cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
@@ -267,7 +266,7 @@ async function loadSVG(svgname) {
   });
 
   input3.addEventListener('change', (event) => {
-    console.log(`${metal}_${medium}`);
+    // console.log(`${metal}_${medium}`);
     if (event.target.checked) {
       metal = event.target.value;
     }
@@ -316,7 +315,7 @@ async function loadSVG(svgname) {
   });
 
   input4.addEventListener('change', (event) => {
-    console.log(`${metal}_${medium}`);
+    // console.log(`${metal}_${medium}`);
 
     if (event.target.checked) {
       metal = event.target.value;
@@ -361,7 +360,7 @@ async function loadSVG(svgname) {
 
 
   input5.addEventListener('change', (event) => {
-    console.log(`${metal}_${medium}`);
+    // console.log(`${metal}_${medium}`);
 
     if (event.target.checked) {
       medium = event.target.value;
@@ -404,7 +403,7 @@ async function loadSVG(svgname) {
   });
 
   input6.addEventListener('change', (event) => {
-    console.log(`${metal}_${medium}`);
+    // console.log(`${metal}_${medium}`);
     if (event.target.checked) {
       medium = event.target.value;
     }
