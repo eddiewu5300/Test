@@ -20,7 +20,7 @@ const input5 = document.querySelector('#medium1');
 const input6 = document.querySelector('#medium2');
 const cylinder = document.querySelector('#cylinder');
 
-
+// global variable, which changes accoss different javascript files
 let lenIndex = 1;
 let radIndex = 1;
 let metal = 'Au';
@@ -37,26 +37,26 @@ async function loadSVG(svgname) {
   let numColumns = colorMap[`${metal}_${medium}`].R[0].length - 1;
   let firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
   let firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
-  // let lastRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
-  // let lastLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
+
+  // asyncronize loading svg
   const response = await fetch(`stain_glass_files/${svgname}.svg`);
   const text = await response.text();
-  // console.log(text, 'texttexttext');
+
   document.querySelector('#my-stain-glass').insertAdjacentHTML('afterBegin', text);
   svg = document.querySelector('svg');
-  // svg.insertAdjacentHTML("afterend", '<use xlink:href="" />')
+
   svg.setAttribute("height", "100%");
   svg.setAttribute("width", "100%");
+  // add class for quering when selected
   if (svg) {
     svg.querySelectorAll('polygon, path, rect, g, circle, ellipse').forEach((d) => {
-      // console.log(d);
       d.classList.add('color-selector');
     });
   }
   // add attribute to svg
   if (svg) {
     svg.querySelectorAll('.color-selector').forEach((d) => {
-      // console.log(d);
+
       d.setAttribute('data-color', `rgb(${r},${g},${b})`);
       d.setAttribute('metal', metal);
       d.setAttribute('medium', medium);
@@ -64,6 +64,8 @@ async function loadSVG(svgname) {
       d.setAttribute('radIndex', radIndex);
     });
   }
+  // add id on each component for highlight effect purpose
+  // exclude first two because first two are the outline of the graph
   svgList = svg.querySelectorAll('.color-selector');
   for (let i = 2; i < svgList.length; i++) {
     if (svgList[i].getAttribute('id')) {
@@ -75,50 +77,47 @@ async function loadSVG(svgname) {
 
   input.max = numColumns;
   input2.max = numRows;
-  // console.log('indemax', input.max, input2.max);
+
   // listen the selected item and store the color, value in class
   svg.addEventListener('click', (evt) => {
-    // console.log(evt.target);
-    // console.log("selected");
-    const targetColor = evt.target.getAttribute('data-color');
 
+    const targetColor = evt.target.getAttribute('data-color');
+    // add the selected class into the selected component and remove selected from others
+    // highlight the first two component in the graph if selected by css
     if (targetColor) {
-      // console.log(evt.target.getAttribute('data-color'))
+
       Array.from(svg.querySelectorAll('.color-selector')).forEach((d) => {
-        // console.log(d);
+
         d.classList.remove('selected');
       });
-      // set up the selected item's attribute at css
       evt.target.classList.add('selected');
       selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
-      // cylinder.setAttribute('color', targetColor);
 
+      // reading selected item color
       rgbValue = targetColor
         .substring(0, targetColor.length - 1)
         .substring(4)
         .split(',')
         .map(d => Number(d));
-      // console.log(rgbValue)
       r = rgbValue[0];
       g = rgbValue[1];
       b = rgbValue[2];
-
+      //highlight the outline of selected item except first two
       id = evt.target.getAttribute('id');
-      // console.log(id);
       use = svg.querySelector('use');
       use.setAttribute('xlink:href', `#${id}`);
       use.setAttribute('stroke', 'red');
       use.setAttribute('stroke-width', '10');
-      // svg.querySelector('#id3').setAttribute('fill', 'blue')
+
 
       lenIndex = parseInt(evt.target.getAttribute('lenIndex'));
       radIndex = parseInt(evt.target.getAttribute('radIndex'));
 
       metal = evt.target.getAttribute('metal');
-      // console.log(metal)
-      medium = evt.target.getAttribute('medium');
-      // console.log(medium)
 
+      medium = evt.target.getAttribute('medium');
+
+      // for radio buttom interaciton
       if (metal === 'Au') {
         document.querySelector('#metal1').checked = true;
         cylinder.setAttribute('color', 'gold');
@@ -142,17 +141,17 @@ async function loadSVG(svgname) {
       input.value = lenIndex;
       input2.value = radIndex;
 
-      // console.log('length int',firstLengthValue)
+
       const radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
       const lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
-      // console.log('rad val', radiusValue);
+
       const parHeight = lengthValue;
       const parRadius = radiusValue;
 
-      // console.log('height radius', parHeight, parRadius);
+
       cylinder.setAttribute('height', parHeight);
       cylinder.setAttribute('radius', parRadius);
-      // cylinder.setAttribute('color', newColor);
+      // reset the color spectrum
       if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
       if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
       if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
@@ -160,9 +159,8 @@ async function loadSVG(svgname) {
       selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     }
   });
-
+  // eventlistener for length
   input.addEventListener('change', (event) => {
-    // console.log(event);
 
     lenIndex = parseInt(event.target.value);
     // checking if the radius of L/R >2
@@ -170,7 +168,7 @@ async function loadSVG(svgname) {
     let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstRadiusValue = colorMap[`${metal}_${medium}`].R[1][0];
     if (lengthValue / radiusValue < 2) {
-      // console.log('ratio of L/R < 2!!!');
+
       radIndex = Math.floor((lengthValue / 2 - firstRadiusValue) / 2) + 1;
       input2.value = radIndex;
       radiusValue = colorMap[`${metal}_${medium}`].R[radIndex][0];
@@ -178,22 +176,19 @@ async function loadSVG(svgname) {
     const parHeight = lengthValue;
     const parRadius = radiusValue;
 
-    // console.log('height radius', parHeight, parRadius);
+
     cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
 
     r = colorMap[`${metal}_${medium}`].R[radIndex][lenIndex];
     g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
-    // bottomCtl.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+
     const newColor = `rgb(${r},${g},${b})`;
-    // cylinder.setAttribute('color', newColor);
+
     // get the selected item
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
-    // console.log(selectedTarget);
-
-    // set color for 3D particle
 
     // set color for svg
     if (selectedTarget) {
@@ -204,6 +199,7 @@ async function loadSVG(svgname) {
       selectedTarget.setAttribute('lenIndex', lenIndex);
       selectedTarget.setAttribute('radIndex', radIndex);
     }
+    // reset the color spectrum
     if (medium === 'glass' && metal === 'Au') { yourVlSpec = goldGlassVec; }
     if (medium === 'glass' && metal === 'Ag') { yourVlSpec = silverGlassVec; }
     if (medium === 'water' && metal === 'Au') { yourVlSpec = goldWaterVec; }
@@ -211,10 +207,9 @@ async function loadSVG(svgname) {
     selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
-
+  // listen to the radius slider
   input2.addEventListener('change', (event) => {
-    // console.log(event);
-    // console.log('input2,', event.target.value);
+
 
     radIndex = parseInt(event.target.value);
 
@@ -223,9 +218,9 @@ async function loadSVG(svgname) {
     let lengthValue = colorMap[`${metal}_${medium}`].R[0][lenIndex];
     firstLengthValue = colorMap[`${metal}_${medium}`].R[0][1];
     if (lengthValue / radiusValue < 2) {
-      // console.log('ratio of L/R < 2!!!');
+
       lenIndex = (radiusValue * 2 - firstLengthValue) / 2 + 1;
-      // console.log('Lindex', lenIndex);
+
       if (lenIndex > numColumns) {
         lenIndex = numColumns;
       }
@@ -235,8 +230,6 @@ async function loadSVG(svgname) {
 
     const parHeight = lengthValue;
     const parRadius = radiusValue;
-    // console.log('height radius', parHeight, parRadius);
-    // cylinder.setAttribute('height',parHeight)
     cylinder.setAttribute('height', parHeight);
     cylinder.setAttribute('radius', parRadius);
 
@@ -244,8 +237,7 @@ async function loadSVG(svgname) {
     g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
-    // set color for 3D particle
-    // cylinder.setAttribute('color', newColor);
+
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
@@ -264,9 +256,9 @@ async function loadSVG(svgname) {
     selectedColor(radIndex, lenIndex, numRows, numColumns, yourVlSpec);
     vegaEmbed('#color-spectrum', yourVlSpec, { actions: false });
   });
-
+  // listion the chnge of radio button for metal
   input3.addEventListener('change', (event) => {
-    // console.log(`${metal}_${medium}`);
+
     if (event.target.checked) {
       metal = event.target.value;
     }
@@ -289,18 +281,14 @@ async function loadSVG(svgname) {
 
     const newColor = `rgb(${r},${g},${b})`;
 
-    // set color for 3D particle
-    // cylinder.setAttribute('color', newColor);
     cylinder.setAttribute('color', 'gold');
 
     // get the selected item
     const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
-      // console.log(selectedTarget);
+
       svg.querySelector('.selected').setAttribute('metal', metal);
       const newColor = `rgb(${r},${g},${b})`;
-      // set color for 3D particle
-      // cylinder.setAttribute('color', newColor);
       // set color for svg
       selectedTarget.style.fill = newColor;
       // store the current color
@@ -315,7 +303,7 @@ async function loadSVG(svgname) {
   });
 
   input4.addEventListener('change', (event) => {
-    // console.log(`${metal}_${medium}`);
+
 
     if (event.target.checked) {
       metal = event.target.value;
@@ -337,14 +325,13 @@ async function loadSVG(svgname) {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
 
     const newColor = `rgb(${r},${g},${b})`;
-    // set color for 3D particle
-    // cylinder.setAttribute('color', newColor);
+
     cylinder.setAttribute('color', 'silver');
     // get the selected item
     const selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
     if (selectedTarget) {
       svg.querySelector('.selected').setAttribute('metal', metal);
-      // console.log(selectedTarget);
+
       // set color for svg
       selectedTarget.style.fill = newColor;
       // store the current color
@@ -360,7 +347,7 @@ async function loadSVG(svgname) {
 
 
   input5.addEventListener('change', (event) => {
-    // console.log(`${metal}_${medium}`);
+
 
     if (event.target.checked) {
       medium = event.target.value;
@@ -382,8 +369,7 @@ async function loadSVG(svgname) {
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
 
     const newColor = `rgb(${r},${g},${b})`;
-    // set color for 3D particle
-    // cylinder.setAttribute('color', newColor);
+
     // get the selected item
 
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];
@@ -403,7 +389,7 @@ async function loadSVG(svgname) {
   });
 
   input6.addEventListener('change', (event) => {
-    // console.log(`${metal}_${medium}`);
+
     if (event.target.checked) {
       medium = event.target.value;
     }
@@ -423,8 +409,7 @@ async function loadSVG(svgname) {
     g = colorMap[`${metal}_${medium}`].G[radIndex][lenIndex];
     b = colorMap[`${metal}_${medium}`].B[radIndex][lenIndex];
     const newColor = `rgb(${r},${g},${b})`;
-    // set color for 3D particle
-    // cylinder.setAttribute('color', newColor);
+
 
     // get the selected item
     selectedTarget = document.querySelectorAll('.color-selector.selected')[0];

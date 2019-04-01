@@ -1,6 +1,7 @@
 
 
 /* eslint-disable no-console */
+// change the svg files
 const menu = document.querySelector('#change-file-buttons');
 
 menu.addEventListener('click', (evt) => {

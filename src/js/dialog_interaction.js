@@ -3,6 +3,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable camelcase */
 // dialog interaction
+// dialog pop out and close
 const history_dia = document.querySelector('#history-dia');
 const science_dia = document.querySelector('#science-dia');
 const scientist_dia = document.querySelector('#scientist-dia');
@@ -26,7 +27,7 @@ function dialog_interaction() {
     dialogPolyfill.registerDialog(history_dia);
   }
   history_but.addEventListener('click', () => {
-    console.log('history');
+
     history_dia.showModal();
   });
   history_dia.querySelector('.close').addEventListener('click', () => {
@@ -36,7 +37,7 @@ function dialog_interaction() {
     dialogPolyfill.registerDialog(scientist_dia);
   }
   scientist_but.addEventListener('click', () => {
-    console.log('scientist');
+
     scientist_dia.showModal();
   });
   scientist_dia.querySelector('.close').addEventListener('click', () => {

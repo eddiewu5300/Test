@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 let timeoutID;
-
+// set up a timer to detect page idle time and change to idle page when inactive
 function setup() {
   this.addEventListener('mousemove', resetTimer, false);
   this.addEventListener('mousedown', resetTimer, false);
@@ -11,20 +11,18 @@ function setup() {
   this.addEventListener('mousewheel', resetTimer, false);
   this.addEventListener('touchmove', resetTimer, false);
   this.addEventListener('MSPointerMove', resetTimer, false);
-
-
   startTimer();
 }
 setup();
 
+
 function startTimer() {
-  // wait 10 before calling goInactive
+  // wait 10 sec before calling goInactive
   timeoutID = window.setTimeout(goInactive, 10000);
 }
 
 function resetTimer() {
   window.clearTimeout(timeoutID);
-  console.log('active');
 
   goActive();
 }
@@ -41,7 +39,7 @@ function goInactive() {
   document.querySelector('#idle-page h1').style.visibility = 'visible';
 
 }
-
+// random select graph
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
