@@ -19,7 +19,7 @@ setup();
 
 function startTimer() {
   // wait 10 before calling goInactive
-  timeoutID = window.setTimeout(goInactive, 100000);
+  timeoutID = window.setTimeout(goInactive, 10000);
 }
 
 function resetTimer() {
@@ -32,6 +32,9 @@ function resetTimer() {
 function goInactive() {
   const randomInt = getRandomInt(3);
   ga('send', 'event', 'user visit', 'visit');
+  scientist_dia.close();
+  history_dia.close();
+  science_dia.close();
 
   document.querySelector('#idle-page img').src = `media/stained-glass${randomInt}.jpg`;
   document.querySelector('#idle-page').style.visibility = 'visible';
