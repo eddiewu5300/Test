@@ -52,6 +52,7 @@ async function loadSVG(svgname) {
     svg.querySelectorAll('polygon, path, rect, g, circle, ellipse').forEach((d) => {
       d.classList.add('color-selector');
     });
+    svg.querySelectorAll('.color-selector')[1].classList.add('selected')
   }
   // add attribute to svg
   if (svg) {

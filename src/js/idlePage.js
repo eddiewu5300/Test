@@ -17,8 +17,8 @@ setup();
 
 
 function startTimer() {
-  // wait 10 sec before calling goInactive
-  timeoutID = window.setTimeout(goInactive, 10000);
+  // wait 3 min before calling goInactive
+  timeoutID = window.setTimeout(goInactive, 180000);
 }
 
 function resetTimer() {
