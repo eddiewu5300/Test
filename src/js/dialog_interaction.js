@@ -14,23 +14,32 @@ const scientist_but = document.querySelector('#scientist-but');
 dialog_interaction();
 
 function dialog_interaction() {
+
   if (!science_dia.showModal) {
     dialogPolyfill.registerDialog(science_dia);
   }
+  var sciAud = new Audio("media/ScienceSG.mp4");
   science_but.addEventListener('click', () => {
+    sciAud.play();
     science_dia.showModal();
+
   });
   science_dia.querySelector('.close').addEventListener('click', () => {
+    sciAud.pause();
+    sciAud = new Audio("media/ScienceSG.mp4");
     science_dia.close();
   });
   if (!history_dia.showModal) {
     dialogPolyfill.registerDialog(history_dia);
   }
+  var hisAud = new Audio("media/HistorySG.mp4");
   history_but.addEventListener('click', () => {
-
+    hisAud.play();
     history_dia.showModal();
   });
   history_dia.querySelector('.close').addEventListener('click', () => {
+    hisAud.pause();
+    hisAud = new Audio("media/HistorySG.mp4");
     history_dia.close();
   });
   if (!scientist_dia.showModal) {
